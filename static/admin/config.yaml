@@ -10,7 +10,7 @@
 #
 ###############################################################################################################
 backend:
-  name: git-gateway
+  name: github
   repo : Tamil-Isai-Kalloori/website
   branch: main  # or whatever your branch is
   base_url: https://tamilisaikalloori.netlify.app # PKCE client.html hostname (just the base domain, no path)
