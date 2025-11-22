@@ -1,0 +1,26 @@
+## For local testing
+# npx decap-server
+# local_backend: true
+backend:
+  name: git-gateway
+
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "settings"
+        label: "Top Bar Settings"
+        file: "data/settings.yaml"
+        fields:
+          - { label: "Phone Number", name: "phone", widget: "string" }
+          - { label: "Email Address", name: "email", widget: "string" }
+          - { label: "Working Days", name: "hours_days", widget: "string" }
+          - { label: "Working Hours", name: "hours_time", widget: "string" }
