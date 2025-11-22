@@ -3,6 +3,7 @@
 # local_backend: true
 backend:
   name: git-gateway
+  repo : Tamil-Isai-Kalloori/website
   branch: main  # or whatever your branch is
 
 media_folder: "static/uploads"
