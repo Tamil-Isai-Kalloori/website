@@ -1,9 +1,21 @@
-## For local testing
-# npx decap-server
-# local_backend: true
-backend:
-  name: git-gateway
 
+###############################################################################################################
+## For local testing     #
+# npx decap-server       # 
+# local_backend: true    #
+##########################
+#
+#
+# auth making reference : https://github.com/nuzulul/decap-cms-google-apps-script/tree/main
+#
+###############################################################################################################
+backend:
+  name: github
+  repo : Tamil-Isai-Kalloori/website
+  branch: main  # or whatever your branch is
+  site_domain: https://tamilisaikalloori.netlify.app  # your website domain for preview
+  base_url: https://tamilisaikalloori.netlify.app # PKCE client.html hostname (just the base domain, no path)
+  auth_endpoint: /admin/client.html # PKCE client.html path
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
