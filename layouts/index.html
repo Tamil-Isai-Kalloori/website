@@ -40,8 +40,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    {{ partial "topbar.html" . }}
-    {{ partial "navbar.html" . }}
+    {{ partial "topbar.html" . }} {{ partial "navbar.html" . }}
 
     <!-- END nav -->
 
@@ -1308,5 +1307,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
+    if (window.netlifyIdentity) { window.netlifyIdentity.on("init", user => { if
+    (!user) { window.netlifyIdentity.on("login", () => { document.location.href
+    = "/admin/"; }); } }); }
   </body>
 </html>
