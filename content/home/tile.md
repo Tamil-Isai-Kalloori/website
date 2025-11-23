@@ -1,5 +1,5 @@
 ---
-title: Tile
+title: Slider
 slides:
   - cta_primary: "-"
     cta_primary_url: "-"
