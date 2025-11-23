@@ -3,8 +3,6 @@ title: Navbar
 logo: /uploads/logo.png
 
 menu:
-  - name: demo
-    url: /demo/
   - name: Home
     url: /
   - name: History
