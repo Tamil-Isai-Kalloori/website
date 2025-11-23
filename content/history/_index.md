@@ -1,6 +1,6 @@
 ---
 title: History
-hero_image: /uploads/today-3-.png
+hero_image: /uploads/rajasir_banner_compressed.png
 hero_title: History
 breadcrumbs:
   - name: Home
