@@ -18,23 +18,26 @@
 
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
+        <li class="nav-item {{ if eq .RelPermalink "/" }}active{{ end }}">
           <a href="index.html" class="nav-link">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ if eq .RelPermalink "/about/" }}active{{ end }}">
           <a href='{{ "about/" | relURL}}' class="nav-link">About</a>
         </li>
-        <li class="nav-item">
-          <a href="menu.html" class="nav-link">Menu</a>
+        <li class="nav-item {{ if eq .RelPermalink "/menu/" }}active{{ end }}">
+          <a href='{{ "menu/" | relURL}}' class="nav-link">Menu</a>
         </li>
-        <li class="nav-item">
-          <a href="blog.html" class="nav-link">Blog</a>
+        <li class="nav-item {{ if eq .RelPermalink "/blog/" }}active{{ end }}">
+          <a href='{{ "blog/" | relURL}}' class="nav-link">Blog</a>
         </li>
-        <li class="nav-item">
-          <a href="contact.html" class="nav-link">Contact</a>
+        <li class="nav-item {{ if eq .RelPermalink "/contact/" }}active{{ end }}">
+          <a href='{{ "contact/" | relURL}}' class="nav-link">Contact</a>
         </li>
-        <li class="nav-item cta">
-          <a href="reservation.html" class="nav-link">Book a table</a>
+                <li class="nav-item {{ if eq .RelPermalink "/blog-single/" }}active{{ end }}">
+          <a href='{{ "blog-single/" | relURL}}' class="nav-link">Blog single</a>
+        </li>
+        <li class="nav-item cta ">
+          <a href='{{ "reservation/" | relURL}}' class="nav-link">Book a table</a>
         </li>
       </ul>
     </div>
