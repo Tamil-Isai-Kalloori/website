@@ -36,3 +36,16 @@ collections:
           - { label: "Email Address", name: "email", widget: "string" }
           - { label: "Working Days", name: "hours_days", widget: "string" }
           - { label: "Working Hours", name: "hours_time", widget: "string" }
+  - name: "slider"
+    label: "Home Slider"
+    folder: "content/home"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Slides"
+        name: "slides"
+        widget: "list"
+        fields:
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Heading", name: "heading", widget: "string" }
