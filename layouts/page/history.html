@@ -1,29 +1,24 @@
 {{ define "main" }}
-<span>
-
-  <!-- HERO -->
-  <section
-    class="hero-wrap hero-wrap-2"
-    style="background-image: url('{{ .Params.hero_image | relURL }}')"
-    data-stellar-background-ratio="0.5"
-  >
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-end justify-content-center">
-        <div class="col-md-9 ftco-animate text-center">
-          <h1 class="mb-2 bread">{{ .Params.hero_title }}</h1>
-          <p class="breadcrumbs">
-            {{ range .Params.breadcrumbs }}
+<!-- HERO SECTION -->
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{ .Params.hero_image | relURL }}')" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-end justify-content-center">
+      <div class="col-md-9 ftco-animate text-center">
+        <h1 class="mb-2 bread">{{ .Params.hero_title }}</h1>
+        <p class="breadcrumbs">
+          {{ range .Params.breadcrumbs }}
             <span class="mr-2">
               <a href="{{ .url | relURL }}">{{ .name }} <i class="ion-ios-arrow-forward"></i></a>
             </span>
-            {{ end }}
-          </p>
-        </div>
+          {{ end }}
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- ABOUT / HISTORY SECTIONS -->
 <section class="ftco-section ftco-wrap-about ftco-no-pb">
   <div class="container">
     <div class="row justify-content-center">
@@ -35,72 +30,58 @@
           <h2 class="mb-4">{{ .Params.about_title }}</h2>
         </div>
 
-        <!-- DYNAMIC ABOUT SECTIONS INSERTED HERE -->
-        <div class="mt-4">
+ <!-- DYNAMIC ABOUT SECTIONS -->
+<div class="mt-5">
+  {{ range .Params.about_sections }}
+    <div class="mb-5">
 
-          {{ range .Params.about_sections }}
-          <div class="row align-items-center mb-5">
+      <!-- SECTION TITLE -->
+      <h3 class="mb-3 text-left">{{ .title }}</h3>
 
-            {{ if not .reverse }}
-            <!-- TEXT LEFT -->
-            <div class="col-md-6 mb-4 text-md-left text-center">
-              <h3 class="mb-3">{{ .title }}</h3>
-              <p>{{ .text }}</p>
-            </div>
+      <!-- IMAGE FLOAT -->
+      <img src="{{ .image | relURL }}" 
+           alt="{{ .title }}"
+           style="float: {{ if .reverse }}right{{ else }}left{{ end }};
+                  width: 10vw; 
+                  min-width: 80px;
+                  margin: 0 1rem 1rem 0; 
+                  border-radius: 5px; 
+                  box-shadow: 0 0 8px rgba(0,0,0,0.2);">
 
-            <!-- IMAGE RIGHT -->
-            <div class="col-md-6 mb-4 text-center">
-              <img src="{{ .image | relURL }}" class="img-fluid rounded shadow" alt="{{ .title }}">
-            </div>
+      <!-- TEXT -->
+      {{ $paragraphs := split .text "\n\n" }}
+      {{ range $paragraphs }}
+        <p style="text-align: justify; line-height: 1.6; margin-bottom: 1rem;">{{ . }}</p>
+      {{ end }}
 
-            {{ else }}
+      <div style="clear: both;"></div> <!-- ensures next section starts below -->
 
-            <!-- IMAGE LEFT -->
-            <div class="col-md-6 mb-4 text-center">
-              <img src="{{ .image | relURL }}" class="img-fluid rounded shadow" alt="{{ .title }}">
-            </div>
+    </div>
+  {{ end }}
+</div>
 
-            <!-- TEXT RIGHT -->
-            <div class="col-md-6 mb-4 text-md-left text-center">
-              <h3 class="mb-3">{{ .title }}</h3>
-              <p>{{ .text }}</p>
-            </div>
 
-            {{ end }}
-
-          </div>
-          {{ end }}
-
-        </div>
-
-        <!-- VIDEO SECTION BELOW THE DYNAMIC CONTENT -->
+        <!-- VIDEO SECTION -->
+        {{ if .Params.about_video }}
         <div class="video justify-content-center">
-          <a
-            href="{{ .Params.about_video }}"
-            class="icon-video popup-youtube d-flex justify-content-center align-items-center"
-          >
+          <a href="{{ .Params.about_video }}" class="icon-video popup-youtube d-flex justify-content-center align-items-center">
             <span class="ion-ios-play"></span>
           </a>
         </div>
+        {{ end }}
 
       </div>
     </div>
   </div>
 </section>
 
-
-  <!-- COUNTERS -->
-  <section
-    class="ftco-section ftco-counter img"
-    id="section-counter"
-    style="background-image: url('/images/bg_4.jpg')"
-    data-stellar-background-ratio="0.5"
-  >
-    <div class="container">
-      <div class="row d-md-flex align-items-center justify-content-center">
-        <div class="col-lg-10">
-          <div class="row d-md-flex align-items-center">
-            {{ range .Params.stats }}
+<!-- COUNTERS -->
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url('/images/bg_4.jpg')" data-stellar-background-ratio="0.5">
+  <div class="container">
+    <div class="row d-md-flex align-items-center justify-content-center">
+      <div class="col-lg-10">
+        <div class="row d-md-flex align-items-center">
+          {{ range .Params.stats }}
             <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
               <div class="block-18">
                 <div class="text">
@@ -109,14 +90,12 @@
                 </div>
               </div>
             </div>
-            {{ end }}
-          </div>
+          {{ end }}
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  {{ partial "footer.html" . }}
-
-</span>
+{{ partial "footer.html" . }}
 {{ end }}
