@@ -1,6 +1,6 @@
 ---
 title: History
-hero_image: /uploads/today-2-.png
+hero_image: /uploads/today-3-.png
 hero_title: History
 breadcrumbs:
   - name: Home
