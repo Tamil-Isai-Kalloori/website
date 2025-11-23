@@ -2,7 +2,7 @@
      Load events.md (single file with events array)
 ------------------------------------------------------------ */}}
 
-{{ $eventsPage := site.GetPage "events" }}
+{{ $eventsPage := site.GetPage "home/events/events" }}
 {{ if not $eventsPage }}
   {{ $found := where site.RegularPages "File.BaseFileName" "events" | first 1 }}
   {{ if gt (len $found) 0 }}{{ $eventsPage = index $found 0 }}{{ end }}

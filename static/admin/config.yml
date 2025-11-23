@@ -58,17 +58,25 @@ collections:
           - { label: "Heading", name: "heading", widget: "string" }
   
   - name: "events"
-    label: "Events"
-    folder: "content"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Category", name: "category", widget: "string" }
-      - { label: "Time", name: "time", widget: "string" }
-      - { label: "Location", name: "location", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Description", name: "description", widget: "text" }
+    label: "Events Page"
+    files:
+      - label: "Events"
+        name: "events"
+        file: "content/home/events/events.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+
+          - label: "Events List"
+            name: "events"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Time", name: "time", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Description", name: "description", widget: "text" }
+
 
 # History Page Configuration
   - name: "history"
