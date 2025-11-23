@@ -39,13 +39,14 @@
       <h3 class="mb-3 text-left">{{ .title }}</h3>
 
       <!-- IMAGE FLOAT -->
-      <img src="{{ .image | relURL }}" 
+      <img 
+           class="about-image"
+           src="{{ .image | relURL }}" 
            alt="{{ .title }}"
-           style="float: {{ if .reverse }}right{{ else }}left{{ end }};
-                  width: 10vw; 
-                  min-width: 80px;
-                  margin: 0 1rem 1rem 0; 
-                  border-radius: 5px; 
+           style="height:auto;
+                  float: {{ if .reverse }}right{{ else }}left{{ end }};
+                  margin: 1.2rem; 
+                   border-radius: 5px; 
                   box-shadow: 0 0 8px rgba(0,0,0,0.2);">
 
       <!-- TEXT -->
@@ -96,6 +97,25 @@
     </div>
   </div>
 </section>
+
+<style>
+  /* Tablet */
+@media (max-width: 992px) {
+  .about-image {
+    width: clamp(150px, 40vw, 350px); /* tablet: preferred 40vw */
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .about-image {
+    float: none;
+    display: block;
+    width: clamp(120px, 80vw, 500px); /* mobile: preferred 80vw */
+    margin: 0 auto 1rem auto;
+  }
+}
+</style>
 
 {{ partial "footer.html" . }}
 {{ end }}

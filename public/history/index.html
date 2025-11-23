@@ -104,7 +104,7 @@
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item ">
-          <a href="index.html" class="nav-link">Home</a>
+          <a href='/' class="nav-link">Home</a>
         </li>
         <li class="nav-item active">
           <a href='/history/' class="nav-link">History</a>
@@ -175,13 +175,14 @@
       <h3 class="mb-3 text-left">தமிழ் இசைச் சங்க வரலாறு</h3>
 
       
-      <img src="/uploads/raja_annamalai1.jpg" 
+      <img 
+           class="about-image"
+           src="/uploads/raja_annamalai1.jpg" 
            alt="தமிழ் இசைச் சங்க வரலாறு"
-           style="float: left;
-                  width: 10vw; 
-                  min-width: 80px;
-                  margin: 0 1rem 1rem 0; 
-                  border-radius: 5px; 
+           style="height:auto;
+                  float: left;
+                  margin: 1.2rem; 
+                   border-radius: 5px; 
                   box-shadow: 0 0 8px rgba(0,0,0,0.2);">
 
       
@@ -216,13 +217,14 @@
       <h3 class="mb-3 text-left">தமிழ் இசைக் கல்லூரி வரலாறு</h3>
 
       
-      <img src="/uploads/rajasir_letter.jpg" 
+      <img 
+           class="about-image"
+           src="/uploads/rajasir_letter.jpg" 
            alt="தமிழ் இசைக் கல்லூரி வரலாறு"
-           style="float: right;
-                  width: 10vw; 
-                  min-width: 80px;
-                  margin: 0 1rem 1rem 0; 
-                  border-radius: 5px; 
+           style="height:auto;
+                  float: right;
+                  margin: 1.2rem; 
+                   border-radius: 5px; 
                   box-shadow: 0 0 8px rgba(0,0,0,0.2);">
 
       
@@ -310,6 +312,25 @@
     </div>
   </div>
 </section>
+
+<style>
+   
+@media (max-width: 992px) {
+  .about-image {
+    width: clamp(150px, 40vw, 350px);  
+  }
+}
+
+ 
+@media (max-width: 768px) {
+  .about-image {
+    float: none;
+    display: block;
+    width: clamp(120px, 80vw, 500px);  
+    margin: 0 auto 1rem auto;
+  }
+}
+</style>
 
 
 
