@@ -1,6 +1,6 @@
 ---
 title: History
-hero_image: /uploads/raja_annamal_mandram.jpg
+hero_image: /uploads/today-2-.png
 hero_title: History
 breadcrumbs:
   - name: Home
@@ -61,6 +61,8 @@ about_sections:
     image: /uploads/rajasir_letter.jpg
     reverse: true
 about_video: https://www.youtube.com/embed/jGIrM-Ilsp8?si=K3XDZhTAx0IubMZh
+layout: history
+type: page
 stats:
   - number: 18
     label: Years of Experienced
@@ -70,6 +72,4 @@ stats:
     label: Couruses
   - number: 20
     label: Staffs
-layout: history
-type: page
 ---
