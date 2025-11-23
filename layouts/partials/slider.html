@@ -1,5 +1,5 @@
 <section class="home-slider owl-carousel js-fullheight">
-  {{ with .Site.GetPage "home/tile.md" }}
+  {{ with .Site.GetPage "home/slider.md" }}
     {{ range .Params.slides }}
       <div class="slider-item js-fullheight" style="background-image: url('{{ .image | relURL }}')">
         <div class="overlay"></div>
@@ -7,10 +7,10 @@
           <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
             <div class="col-md-12 col-sm-12 text-center ftco-animate">
               <h1 class="mb-4 mt-5">{{ .heading }}</h1>
-              <p>
+              <!-- <p>
                 <a href="{{ .cta_primary_url }}" class="btn btn-primary p-3 px-xl-4 py-xl-3">{{ .cta_primary }}</a>
                 <a href="{{ .cta_secondary_url }}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">{{ .cta_secondary }}</a>
-              </p>
+              </p> -->
             </div>
           </div>
         </div>
