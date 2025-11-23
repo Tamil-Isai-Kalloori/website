@@ -61,8 +61,6 @@ about_sections:
     image: /uploads/rajasir_letter.jpg
     reverse: true
 about_video: https://www.youtube.com/embed/jGIrM-Ilsp8?si=K3XDZhTAx0IubMZh
-layout: history
-type: page
 stats:
   - number: 18
     label: Years of Experienced
@@ -72,4 +70,7 @@ stats:
     label: Couruses
   - number: 20
     label: Staffs
+bottom_banner: /uploads/tamil_isai_kalloori.jpeg
+layout: history
+type: page
 ---
