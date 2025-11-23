@@ -60,7 +60,7 @@ about_sections:
 
     image: /uploads/rajasir_letter.jpg
     reverse: true
-about_video: https://www.youtube.com/embed/jGIrM-Ilsp8?si=K3XDZhTAx0IubMZh
+about_video: https://www.youtube.com/embed/TwHGyv4EYp0?si=rbHD4zjGUfEpPurM
 stats:
   - number: 18
     label: Years of Experienced
