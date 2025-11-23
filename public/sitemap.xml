@@ -25,6 +25,8 @@
   </url><url>
     <loc>//localhost:1313/menu/</loc>
   </url><url>
+    <loc>//localhost:1313/home/slider/</loc>
+  </url><url>
     <loc>//localhost:1313/home/tile/</loc>
   </url><url>
     <loc>//localhost:1313/tags/</loc>
