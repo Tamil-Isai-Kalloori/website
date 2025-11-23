@@ -58,7 +58,7 @@ collections:
           - { label: "Heading", name: "heading", widget: "string" }
   
   - name: "events"
-    label: "Events Page"
+    label: "Home / Events Section"
     files:
       - label: "Events"
         name: "events"
