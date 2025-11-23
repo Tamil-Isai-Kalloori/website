@@ -122,7 +122,3 @@ collections:
         fields:
           - { label: "Number", name: "number", widget: "number" }
           - { label: "Label", name: "label", widget: "string" }
-
-      - { label: "Layout", name: "layout", widget: "string", default: "history" }
-      - { label: "Type", name: "type", widget: "string", default: "page" }
-
