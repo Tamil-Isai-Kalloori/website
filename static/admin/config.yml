@@ -122,3 +122,5 @@ collections:
         fields:
           - { label: "Number", name: "number", widget: "number" }
           - { label: "Label", name: "label", widget: "string" }
+      - { label: "Bottom Image", name: "bottom_banner", widget: "image" }
+
