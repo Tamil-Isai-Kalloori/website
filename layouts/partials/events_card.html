@@ -1,0 +1,20 @@
+<div class="menus d-flex ftco-animate">
+  <div class="menu-img img" style="background-image: url('{{ .image }}')"></div>
+  <div class="text">
+    <div class="d-flex">
+      <div class="one-half">
+        <h3>{{ .title }}</h3>
+      </div>
+    </div>
+
+    <p>
+      <span>{{ .category }}</span>,
+      <span>{{ .time }}</span>,
+      <span>{{ .location }}</span>
+    </p>
+
+    {{ if .description }}
+      <p>{{ .description }}</p>
+    {{ end }}
+  </div>
+</div>

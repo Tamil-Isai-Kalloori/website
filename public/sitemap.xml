@@ -5,21 +5,13 @@
     <loc>//localhost:1313/</loc>
     <lastmod>2025-11-23T06:00:55+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/reservation/</loc>
-    <lastmod>2025-11-23T06:00:55+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/blog-single/</loc>
-    <lastmod>2025-11-23T06:00:48+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/contact/</loc>
-    <lastmod>2025-11-23T06:00:42+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/about/</loc>
-    <lastmod>2025-11-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/blog/</loc>
   </url><url>
     <loc>//localhost:1313/categories/</loc>
+  </url><url>
+    <loc>//localhost:1313/events/</loc>
+  </url><url>
+    <loc>//localhost:1313/history/</loc>
   </url><url>
     <loc>//localhost:1313/home/</loc>
   </url><url>

@@ -1,0 +1,122 @@
+{{ define "main" }}
+<span>
+
+  <!-- HERO -->
+  <section
+    class="hero-wrap hero-wrap-2"
+    style="background-image: url('{{ .Params.hero_image | relURL }}')"
+    data-stellar-background-ratio="0.5"
+  >
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-end justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+          <h1 class="mb-2 bread">{{ .Params.hero_title }}</h1>
+          <p class="breadcrumbs">
+            {{ range .Params.breadcrumbs }}
+            <span class="mr-2">
+              <a href="{{ .url | relURL }}">{{ .name }} <i class="ion-ios-arrow-forward"></i></a>
+            </span>
+            {{ end }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="ftco-section ftco-wrap-about ftco-no-pb">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 wrap-about ftco-animate text-center">
+
+        <!-- MAIN HEADING -->
+        <div class="heading-section mb-4 text-center">
+          <span class="subheading">{{ .Params.about_subheading }}</span>
+          <h2 class="mb-4">{{ .Params.about_title }}</h2>
+        </div>
+
+        <!-- DYNAMIC ABOUT SECTIONS INSERTED HERE -->
+        <div class="mt-4">
+
+          {{ range .Params.about_sections }}
+          <div class="row align-items-center mb-5">
+
+            {{ if not .reverse }}
+            <!-- TEXT LEFT -->
+            <div class="col-md-6 mb-4 text-md-left text-center">
+              <h3 class="mb-3">{{ .title }}</h3>
+              <p>{{ .text }}</p>
+            </div>
+
+            <!-- IMAGE RIGHT -->
+            <div class="col-md-6 mb-4 text-center">
+              <img src="{{ .image | relURL }}" class="img-fluid rounded shadow" alt="{{ .title }}">
+            </div>
+
+            {{ else }}
+
+            <!-- IMAGE LEFT -->
+            <div class="col-md-6 mb-4 text-center">
+              <img src="{{ .image | relURL }}" class="img-fluid rounded shadow" alt="{{ .title }}">
+            </div>
+
+            <!-- TEXT RIGHT -->
+            <div class="col-md-6 mb-4 text-md-left text-center">
+              <h3 class="mb-3">{{ .title }}</h3>
+              <p>{{ .text }}</p>
+            </div>
+
+            {{ end }}
+
+          </div>
+          {{ end }}
+
+        </div>
+
+        <!-- VIDEO SECTION BELOW THE DYNAMIC CONTENT -->
+        <div class="video justify-content-center">
+          <a
+            href="{{ .Params.about_video }}"
+            class="icon-video popup-youtube d-flex justify-content-center align-items-center"
+          >
+            <span class="ion-ios-play"></span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- COUNTERS -->
+  <section
+    class="ftco-section ftco-counter img"
+    id="section-counter"
+    style="background-image: url('/images/bg_4.jpg')"
+    data-stellar-background-ratio="0.5"
+  >
+    <div class="container">
+      <div class="row d-md-flex align-items-center justify-content-center">
+        <div class="col-lg-10">
+          <div class="row d-md-flex align-items-center">
+            {{ range .Params.stats }}
+            <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+              <div class="block-18">
+                <div class="text">
+                  <strong class="number" data-number="{{ .number }}">0</strong>
+                  <span>{{ .label }}</span>
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{ partial "footer.html" . }}
+
+</span>
+{{ end }}

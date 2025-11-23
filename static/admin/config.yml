@@ -13,8 +13,8 @@ backend:
   name: github
   repo : Tamil-Isai-Kalloori/website
   branch: main  # or whatever your branch is
-  site_domain: https://tamilisaikalloori.netlify.app  # your website domain for preview
-  base_url: https://tamilisaikalloori.netlify.app # PKCE client.html hostname (just the base domain, no path)
+  site_domain: https://studious-carnival-5g576qrpp5g93q5j-1313.app.github.dev/  # your website domain for preview
+  base_url: https://studious-carnival-5g576qrpp5g93q5j-1313.app.github.dev/ # PKCE client.html hostname (just the base domain, no path)
   auth_endpoint: /admin/client.html # PKCE client.html path
 
 media_folder: "static/uploads"
@@ -36,6 +36,13 @@ collections:
           - { label: "Email Address", name: "email", widget: "string" }
           - { label: "Working Days", name: "hours_days", widget: "string" }
           - { label: "Working Hours", name: "hours_time", widget: "string" }
+#####################################################
+
+######## Home Page ################################
+
+##################################################
+
+## Home Slider Section 
   - name: "slider"
     label: "Home Slider"
     folder: "content/home"
@@ -49,3 +56,65 @@ collections:
         fields:
           - { label: "Image", name: "image", widget: "image" }
           - { label: "Heading", name: "heading", widget: "string" }
+  
+  - name: "events"
+    label: "Events"
+    folder: "content/events"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Time", name: "time", widget: "string" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
+
+# History Page Configuration
+  - name: "history"
+    label: "History Page"
+    folder: "content/history"
+    create: false
+    slug: "index"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Hero Image", name: "hero_image", widget: "image" }
+      - { label: "Hero Title", name: "hero_title", widget: "string" }
+      - label: "Breadcrumbs"
+        name: "breadcrumbs"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "URL", name: "url", widget: "string", required: false }
+
+      - { label: "About Subheading", name: "about_subheading", widget: "string" }
+      - { label: "About Title", name: "about_title", widget: "string" }
+
+      # ⭐ Dynamic ABOUT SECTIONS
+      - label: "About Sections"
+        name: "about_sections"
+        widget: "list"
+        summary: "{{fields.title}}"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Image", name: "image", widget: "image" }
+
+          # ⭐ Reverse toggle (for alternating layout)
+          - label: "Reverse Layout (image left)"
+            name: "reverse"
+            widget: "boolean"
+            default: false
+
+      - { label: "About Video", name: "about_video", widget: "string", required: false }
+
+      - label: "Stats"
+        name: "stats"
+        widget: "list"
+        fields:
+          - { label: "Number", name: "number", widget: "number" }
+          - { label: "Label", name: "label", widget: "string" }
+
+      - { label: "Layout", name: "layout", widget: "string", default: "history" }
+      - { label: "Type", name: "type", widget: "string", default: "page" }
+
