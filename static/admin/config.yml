@@ -124,3 +124,20 @@ collections:
           - { label: "Label", name: "label", widget: "string" }
       - { label: "Bottom Image", name: "bottom_banner", widget: "image" }
 
+# Navbar configuration for Decap CMS
+  - name: "navbar"
+    label: "Navbar"
+    files:
+      - label: "Navbar"
+        name: "navbar"
+        file: "content/navbar/navbar.md"
+        format: yaml
+        fields:
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - label: "Menu Items"
+            name: "menu"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "CTA", name: "cta", widget: "boolean", required: false }
