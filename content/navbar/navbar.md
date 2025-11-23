@@ -1,7 +1,6 @@
 ---
 title: Navbar
-logo: /uploads/logo.png
-
+logo: /uploads/group-1.svg
 menu:
   - name: Home
     url: /
