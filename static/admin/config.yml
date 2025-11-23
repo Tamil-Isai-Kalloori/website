@@ -59,7 +59,7 @@ collections:
   
   - name: "events"
     label: "Events"
-    folder: "content/events"
+    folder: "content"
     create: true
     slug: "{{slug}}"
     fields:
