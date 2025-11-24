@@ -1,5 +1,5 @@
 ---
 title : 'Menu'
-layout: "menu"
+layout: "isai_vizha"
 type: "page"
 ---

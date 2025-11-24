@@ -6,8 +6,8 @@ menu:
     url: /
   - name: History
     url: /history/
-  - name: Menu
-    url: /menu/
+  - name: Isai Vizha
+    url: /isai_vizha/
   - name: Blog
     url: /blog/
   - name: Contact
