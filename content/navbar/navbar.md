@@ -1,6 +1,6 @@
 ---
 title: Navbar
-logo: /uploads/logo.svg
+logo: /uploads/tamil_isai_sangam_logo.svg
 menu:
   - name: Home
     url: /
