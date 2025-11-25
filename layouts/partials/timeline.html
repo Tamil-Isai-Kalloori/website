@@ -55,10 +55,8 @@
   
     <details class="timeline-dropdown" {{ if eq .key $active }}open{{ end }}>
       <summary>{{ $timelineContent.Params.month }} {{ .date }}</summary>
-      <div class="section-heading wow fadeIn">
-      <div class="heading-separator"></div>
-    </div>
-    <div class="row">
+  
+    <div class="row ">
 
       <div class="history-wrapper">
         <!-- just their for alignment -->
@@ -91,6 +89,12 @@
   .history-wrapper {
     position: relative;
     padding: 50px 0 50px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition:
+      max-height 0.55s ease,
+      opacity 0.45s ease;
   }
   .history-wrapper:after {
     content: "";
@@ -225,6 +229,15 @@
   border-color: #ffa323;
 }
 
+.timeline-dropdown[open] .history-wrapper {
+  max-height: 20000px; /* large enough to fit any content */
+  opacity: 1;
+}
+
+.timeline-dropdown[open] .history-wrapper > * {
+  animation: fadeSlide 0.4s ease;
+}
+
 /* ---------- Summary (the header) ---------- */
 .timeline-dropdown summary {
   list-style: none;
@@ -245,12 +258,12 @@
   color: #c76700;
 }
 
-/* Remove default arrow */
+/* Remove default ar  */
 .timeline-dropdown summary::-webkit-details-marker {
   display: none;
 }
 
-/* ---------- Custom Arrow Icon ---------- */
+/* ---------- Custom Ar  Icon ---------- */
 .timeline-dropdown summary::after {
   content: "▸"; /* triangle arrow */
   margin-left: auto;

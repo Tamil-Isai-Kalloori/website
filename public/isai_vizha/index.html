@@ -266,10 +266,8 @@
   
     <details class="timeline-dropdown" open>
       <summary>December 22</summary>
-      <div class="section-heading wow fadeIn">
-      <div class="heading-separator"></div>
-    </div>
-    <div class="row">
+  
+    <div class="row ">
 
       <div class="history-wrapper">
         
@@ -312,10 +310,8 @@
   
     <details class="timeline-dropdown" >
       <summary>December 23</summary>
-      <div class="section-heading wow fadeIn">
-      <div class="heading-separator"></div>
-    </div>
-    <div class="row">
+  
+    <div class="row ">
 
       <div class="history-wrapper">
         
@@ -365,6 +361,12 @@
   .history-wrapper {
     position: relative;
     padding: 50px 0 50px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition:
+      max-height 0.55s ease,
+      opacity 0.45s ease;
   }
   .history-wrapper:after {
     content: "";
@@ -497,6 +499,15 @@
 .timeline-dropdown[open] {
   box-shadow: 0 3px 6px rgba(0,0,0,0.05);
   border-color: #ffa323;
+}
+
+.timeline-dropdown[open] .history-wrapper {
+  max-height: 20000px;  
+  opacity: 1;
+}
+
+.timeline-dropdown[open] .history-wrapper > * {
+  animation: fadeSlide 0.4s ease;
 }
 
  
