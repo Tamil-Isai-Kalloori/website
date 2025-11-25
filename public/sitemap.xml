@@ -24,5 +24,7 @@
     <loc>//localhost:1313/home/slider/</loc>
   </url><url>
     <loc>//localhost:1313/tags/</loc>
+  </url><url>
+    <loc>//localhost:1313/isai_vizha/timeline/</loc>
   </url>
 </urlset>
