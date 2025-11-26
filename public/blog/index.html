@@ -159,7 +159,18 @@
   fill: black;  
 }
 
+svg {
+  visibility: hidden;
+}
+
+
 </style>
+
+<script>
+window.addEventListener("load", function () {
+  document.querySelectorAll("svg").forEach(el => el.style.visibility = "visible");
+});
+</script>
 
     
     

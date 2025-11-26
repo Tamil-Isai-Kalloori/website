@@ -2,13 +2,13 @@
 $paragraphs.Params.paragraphs }}
 <div style="margin-bottom: 5rem">
   <div class="col-md-7 text-left heading-section ftco-animate">
-    <h2 class="mb-4">{{ .title }}</h2>
+    <h2 class="mb-4 page-title">{{ .title }}</h2>
   </div>
 
-  <h4 style="text-align: justify; line-height: 1.6; margin-bottom: 1rem">
+  <h4 class="content-text">
     {{ .content }}
   </h4>
-  <a href="#" class="lm-static-1"
+  <a href="#" class="lm-static"
     >
     <svg
       class="music_icon"
@@ -46,7 +46,7 @@ $paragraphs.Params.paragraphs }}
 {{ end }}
 
 <style>
-  .lm-static-1 {
+  .lm-static {
     font-size: 18px;
     font-weight: 500;
     color: #222;
@@ -55,10 +55,23 @@ $paragraphs.Params.paragraphs }}
     text-decoration-color: #ffa323;
   }
 
-  .lm-static-1 .music_icon{
+  .lm-static .music_icon{
     width: 30px;
     height: 30px;
   }
+
+  .content-text {
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: clamp(14px, 2vw, 22px);
+}
+
+.page-title {
+  font-size: clamp(20px, 3vw, 40px) !important;
+  font-weight: 600;
+}
+
 
 
  
