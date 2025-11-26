@@ -141,3 +141,30 @@ collections:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
               - { label: "CTA", name: "cta", widget: "boolean", required: false }
+
+# Isai Vizha page
+  - name: "Isai_Vizha"
+    label: "Isai Vizha"
+    files: 
+      - label: "Time Line"
+        name: "timeline"
+        file: "content/isai_vizha/timeline.md"
+        format: "yaml"
+        fields:
+          - { label: "Month", name: "month", widget:"stirng"}
+          - label: "Events"
+            name: "timeline"
+            widget: "list"
+            fields:
+              - { label: "Date", name: "date", widget: "string" }
+              - label : "Schedule"
+                name: "schedule"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Time", name: "time", widget: "string" }
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Description", name: "description", widget: "string" }
+
+
+
