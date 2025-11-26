@@ -1,10 +1,12 @@
 ---
 title : 'Isai Vizha'
 hero_image: /uploads/rajasir_banner_compressed.png
-hero_title: History
+hero_title: Margazhi Peru Vizha
 breadcrumbs:
   - name: Home
     url: /
-  - name: History
-    url: /history/
+  - name: Isai Vizha
+    url: /isai_vizha/
+layout: "isai_vizha"
+type: "page"
 ---

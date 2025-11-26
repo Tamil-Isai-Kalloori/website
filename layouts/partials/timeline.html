@@ -19,7 +19,6 @@
 {{ range $timelineContent.Params.timeline }}
 
     {{/* Parse "December 22" by adding a dummy year */}}
-    {{ warnf "DATE RAW VALUE: '%s'" .date }}
 {{ $clean := replace (trim .date " ") "  " " " }}
 {{ $parsed := time.AsTime (printf "%s Dec 2025" $clean) "Asia/Calcutta" }}
 
