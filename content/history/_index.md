@@ -6,6 +6,7 @@ breadcrumbs:
   - name: Home
     url: /
   - name: History
+    url: /history/
 about_subheading: History
 about_title: About Us
 about_sections:

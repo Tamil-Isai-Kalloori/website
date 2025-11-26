@@ -1,5 +1,10 @@
 ---
 title : 'Isai Vizha'
-layout: "isai_vizha"
-type: "page"
+hero_image: /uploads/rajasir_banner_compressed.png
+hero_title: History
+breadcrumbs:
+  - name: Home
+    url: /
+  - name: History
+    url: /history/
 ---
