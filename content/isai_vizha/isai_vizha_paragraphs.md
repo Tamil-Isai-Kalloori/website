@@ -1,5 +1,4 @@
 ---
-title: Isai Vizha Paragraphs
 paragraphs:
   - title: Pann Research
     content: >+
