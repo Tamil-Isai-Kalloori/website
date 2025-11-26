@@ -151,13 +151,13 @@ collections:
         file: "content/isai_vizha/timeline.md"
         format: "yaml"
         fields:
-          - { label: "Month", name: "month", widget:"stirng"}
+          - { label: "Month", name: "month", widget:"string"}
           - label: "Events"
             name: "timeline"
             widget: "list"
             fields:
               - { label: "Date", name: "date", widget: "string" }
-              - label : "Schedule"
+              - label: "Schedule"
                 name: "schedule"
                 widget: "list"
                 fields:
@@ -165,6 +165,20 @@ collections:
                   - { label: "Time", name: "time", widget: "string" }
                   - { label: "Image", name: "image", widget: "image" }
                   - { label: "Description", name: "description", widget: "string" }
+                  
+      - label: "Description Paragraphs"
+        name: "isai_vizha_paragraphs"
+        file: "content/isai_vizha/isai_vizha_paragraphs.md"
+        format: "frontmatter"
+        fields:
+          - label: "Description Paragraphs"
+            name: "paragraphs"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Content", name: "content", widget: "text" }
+              - { label: "Link", name: "link", widget: "string" }
+
 
 
 
