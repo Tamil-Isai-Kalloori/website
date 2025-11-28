@@ -10,18 +10,21 @@
 <div class="container">
   <section class="ftco-section">
     <div class="container-fluid px-4">
-      <!-- Isasi vizha 2025 title -->
+      <!-- Pann Isai Research title -->
       <div class="row justify-content-center mb-5 pb-2">
         <div class="col-md-7 text-center heading-section ftco-animate">
-          <span class="subheading">Isai Vizha</span>
-          <h2 class="mb-4">2025</h2>
+          <span class="subheading">Pann Isai</span>
+          <h2 class="mb-2">Research</h2>
         </div>
       </div>
 
-	  <!-- Time line -->
+    <p>
+      {{ $paragraphs := split .Params.paragraphs "\n" }}
+      {{ range $paragraphs }}
+        <p style="text-align: justify; line-height: 1.6; margin-bottom: 1rem;">{{ . }}</p>
+      {{ end }}
 
-    {{ partial "isai_vizha_paragraphs.html" . }}
-	  {{ partial "timeline.html" . }}
+    </p>
     </div>
   </section>
 </div>

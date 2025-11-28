@@ -39,7 +39,7 @@
                   box-shadow: 0 0 8px rgba(0,0,0,0.2);">
 
       <!-- TEXT -->
-      {{ $paragraphs := split .text "\n\n" }}
+      {{ $paragraphs := split .text "\n" }}
       {{ range $paragraphs }}
         <p style="text-align: justify; line-height: 1.6; margin-bottom: 1rem;">{{ . }}</p>
       {{ end }}

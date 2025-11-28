@@ -6,7 +6,6 @@
     <description>Recent content in Home on My Hugo Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
@@ -37,10 +36,31 @@
       <description></description>
     </item>
     <item>
+      <title>Pann Research</title>
+      <link>//localhost:1313/isai_vizha/pann_research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/isai_vizha/pann_research/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Slider</title>
       <link>//localhost:1313/home/slider/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/home/slider/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Special Guests</title>
+      <link>//localhost:1313/isai_vizha/awards/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/isai_vizha/awards/</guid>
+      <description>&lt;hr&gt;</description>
+    </item>
+    <item>
+      <title>Special Guests</title>
+      <link>//localhost:1313/isai_vizha/special_guest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/isai_vizha/special_guest/</guid>
       <description></description>
     </item>
     <item>
