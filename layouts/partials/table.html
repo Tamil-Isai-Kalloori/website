@@ -1,0 +1,189 @@
+<style>
+/* Smooth row animation */
+.table-row-anim { animation: fadeIn 0.25s ease-in-out; }
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+/* Sticky header */
+.table-responsive {
+  max-height: 450px;
+  overflow-y: auto;
+  position: relative;
+}
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #212529;
+  color: white;
+}
+
+/* Mobile Responsive (Stack rows) */
+@media (max-width: 768px) {
+  table thead {
+    display: none;
+  }
+  table tbody tr {
+    display: block;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 10px;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+  table tbody td:last-child {
+    border-bottom: none;
+  }
+  td::before {
+    font-weight: 600;
+    text-transform: capitalize;
+    content: attr(data-label);
+  }
+}
+</style>
+
+<div class="card shadow p-3">
+
+  <!-- TOP CONTROLS -->
+  <div class="d-flex justify-content-between mb-3 flex-wrap gap-2">
+    <input type="text" id="tableSearch" class="form-control w-25" placeholder="Search...">
+
+    <div class="d-flex gap-2">
+      <select id="rowsPerPage" class="form-select w-auto">
+        <option value="5">5 rows</option>
+        <option value="10" selected>10 rows</option>
+        <option value="20">20 rows</option>
+      </select>
+
+      <button id="exportCSV" class="btn btn-success">Export CSV</button>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped" id="bsTable">
+
+      <thead class="table-dark">
+        <tr>
+          {{ range .headers }}
+            <th class="sortable" style="cursor:pointer;">{{ . }} ▲▼</th>
+          {{ end }}
+        </tr>
+      </thead>
+
+        <tbody>
+        {{ $headers := .headers }}
+        {{ $rows := .rows }}
+
+        {{ range $row := $rows }}
+            <tr>
+            {{ range $h := $headers }}
+                <td data-label="{{ $h }}">{{ index $row $h }}</td>
+            {{ end }}
+            </tr>
+        {{ end }}
+
+        </tbody>
+
+
+    </table>
+  </div>
+
+  <nav><ul class="pagination justify-content-center" id="pagination"></ul></nav>
+
+</div>
+
+
+<script>
+(function(){
+  const table = document.getElementById("bsTable");
+  const searchInput = document.getElementById("tableSearch");
+  const rowsPerPageSelect = document.getElementById("rowsPerPage");
+  const pagination = document.getElementById("pagination");
+  const exportBtn = document.getElementById("exportCSV");
+
+  let currentPage = 1;
+  let rowsPerPage = parseInt(rowsPerPageSelect.value);
+  let sortColumnIndex = null;
+  let sortAsc = true;
+
+  function getRows(){ return Array.from(table.querySelectorAll("tbody tr")); }
+
+  function filterRows(){
+    const q = searchInput.value.toLowerCase();
+    getRows().forEach(r => r.style.display = r.innerText.toLowerCase().includes(q) ? "" : "none");
+    currentPage = 1; animateRows(); renderTable();
+  }
+
+  function sortRows(idx){
+    const rows = getRows();
+    sortAsc = sortColumnIndex === idx ? !sortAsc : true;
+    sortColumnIndex = idx;
+
+    rows.sort((a,b)=>{
+      const A = a.children[idx].innerText.toLowerCase();
+      const B = b.children[idx].innerText.toLowerCase();
+      return sortAsc ? A.localeCompare(B) : B.localeCompare(A);
+    });
+
+    rows.forEach(r => table.querySelector("tbody").appendChild(r));
+    animateRows();
+    renderTable();
+  }
+
+  function renderTable(){
+    const rows = getRows().filter(r => r.style.display !== "none");
+    const total = rows.length;
+    const start = (currentPage - 1)*rowsPerPage;
+    const end = start + rowsPerPage;
+
+    rows.forEach((r,i)=>r.style.display = i>=start && i<end ? "" : "none");
+    renderPagination(total);
+  }
+
+  function renderPagination(total){
+    pagination.innerHTML = "";
+    const pages = Math.ceil(total/rowsPerPage);
+    for(let i=1;i<=pages;i++){
+      const li=document.createElement("li");
+      li.className="page-item"+(i===currentPage?" active":"");
+      const a=document.createElement("a");
+      a.className="page-link"; a.href="#"; a.textContent=i;
+      a.onclick=e=>{e.preventDefault();currentPage=i;animateRows();renderTable();}
+      li.appendChild(a); pagination.appendChild(li);
+    }
+  }
+
+  function animateRows(){
+    getRows().forEach(r=>{
+      r.classList.remove("table-row-anim");
+      void r.offsetWidth;
+      r.classList.add("table-row-anim");
+    });
+  }
+
+  function exportCSV(){
+    let csv = [];
+    getRows().forEach(row=>{
+      const cols = Array.from(row.children).map(td=> `"${td.innerText}"`);
+      csv.push(cols.join(","));
+    });
+    const blob = new Blob([csv.join("\n")], {type:"text/csv"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob); a.download="table.csv"; a.click();
+  }
+
+  searchInput.oninput = filterRows;
+  rowsPerPageSelect.onchange = ()=>{ rowsPerPage=parseInt(rowsPerPageSelect.value); renderTable(); };
+  exportBtn.onclick = exportCSV;
+
+  table.querySelectorAll("thead th").forEach((th,idx)=> th.onclick=()=>sortRows(idx));
+
+  renderTable();
+})();
+</script>

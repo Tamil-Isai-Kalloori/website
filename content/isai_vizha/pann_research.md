@@ -24,7 +24,11 @@ paragraphs: >+
 
     இதுவரை நடைபெற்ற பண் ஆராய்ச்சிக் கூட்டங்களின் வாயிலாகப் பின்வரும் பண்கள் ஆய்வு செய்யப்பட்டு அவற்றிற்கு இணையான இராகங்கள் எவை எனப் பின்வருமாறு அறிவிக்கப்பட்டுள்ளன.
 
-table:
+research_image: /uploads/tamil_isai_kalloori.jpeg
+table_headers:
+  - pann
+  - ragam
+table_rows:
   - pann: பஞ்சமம்
     ragam: ஆகிரி
   - pann: புறநீர்மை
