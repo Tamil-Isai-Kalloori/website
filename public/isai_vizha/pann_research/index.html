@@ -252,965 +252,256 @@
 
       </p>
 
-          <style>
- 
-.table-row-anim { animation: fadeIn 0.25s ease-in-out; }
-@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+          
+<style>
+   
+  .table-responsive {
+    max-height: 450px;
+    overflow-y: auto;
+  }
+  thead th {
+    position: sticky;
+    top: 0;
+    background: #212529;
+    color: #fff;
+    z-index: 10;
+  }
 
- 
-.table-responsive {
-  max-height: 450px;
-  overflow-y: auto;
-  position: relative;
-}
-thead th {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: #212529;
-  color: white;
-}
+   
+  tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
 
- 
-@media (max-width: 768px) {
-  table thead {
-    display: none;
+   
+  .highlight {
+    background: #ffe066;
+    padding: 2px 4px;
+    border-radius: 4px;
   }
-  table tbody tr {
-    display: block;
-    margin-bottom: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
+
+   
+  #pagination {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #dee2e6;
+    padding: 6px 15px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 50;
   }
-  table tbody td {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 10px;
-    border: none;
-    border-bottom: 1px solid #eee;
-  }
-  table tbody td:last-child {
-    border-bottom: none;
-  }
-  td::before {
-    font-weight: 600;
-    text-transform: capitalize;
-    content: attr(data-label);
-  }
-}
+
 </style>
 
-<div class="card shadow p-3">
+<div class="card shadow p-4 mb-5">
 
   
-  <div class="d-flex justify-content-between mb-3 flex-wrap gap-2">
-    <input type="text" id="tableSearch" class="form-control w-25" placeholder="Search...">
+  <div class="d-flex justify-content-between flex-wrap mb-3 gap-3">
+
+    
+    <input id="searchInput" type="text" class="form-control w-auto" style="min-width:250px"
+           placeholder="Search...">
 
     <div class="d-flex gap-2">
-      <select id="rowsPerPage" class="form-select w-auto">
+
+      
+      <select id="rowsSelect" class="form-select w-auto">
         <option value="5">5 rows</option>
         <option value="10" selected>10 rows</option>
         <option value="20">20 rows</option>
       </select>
 
-      <button id="exportCSV" class="btn btn-success">Export CSV</button>
+      
+      <button id="csvExport" class="btn btn-success">
+        Export CSV
+      </button>
     </div>
   </div>
 
   
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped" id="bsTable">
-
-      <thead class="table-dark">
+  <div class="table-responsive border rounded">
+    <table class="table table-hover table-borderless mb-0" id="mainTable">
+      <thead>
         <tr>
           
-            <th class="sortable" style="cursor:pointer;">pann ▲▼</th>
+            <th class="sortable" data-key="pann" style="cursor:pointer;">
+              pann <span class="opacity-50">▲▼</span>
+            </th>
           
-            <th class="sortable" style="cursor:pointer;">ragam ▲▼</th>
+            <th class="sortable" data-key="ragam" style="cursor:pointer;">
+              ragam <span class="opacity-50">▲▼</span>
+            </th>
           
         </tr>
       </thead>
 
-        <tbody>
-        
-        
-
-        
-            <tr>
-            
-                <td data-label="pann">பஞ்சமம்</td>
-            
-                <td data-label="ragam">ஆகிரி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">புறநீர்மை</td>
-            
-                <td data-label="ragam">பூபாளம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">அந்தாளிக்குறிஞ்சி</td>
-            
-                <td data-label="ragam">சாமா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">காந்தாரபஞ்சமம்</td>
-            
-                <td data-label="ragam">கேதார கெளளை</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">தக்கேசி</td>
-            
-                <td data-label="ragam">காம்போதி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">செவ்வழி</td>
-            
-                <td data-label="ragam">எதுகுல காம்போதி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">வியாழக் குறிஞ்சி</td>
-            
-                <td data-label="ragam">செளராஷ்டிரம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சீகாமரம்</td>
-            
-                <td data-label="ragam">நாதநாமக்கிரியை</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">கெளசிகம்</td>
-            
-                <td data-label="ragam">பைரவி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">செந்துருத்தி</td>
-            
-                <td data-label="ragam">மத்யமாவதி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">பழம் பஞ்சுரம்</td>
-            
-                <td data-label="ragam">சங்கராபரணம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">கொல்லி</td>
-            
-                <td data-label="ragam">நவரோசு</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">கொல்லிக்கெளவாணம்</td>
-            
-                <td data-label="ragam">நவரோசு</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">காந்தாரம்</td>
-            
-                <td data-label="ragam">நவரோசு</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">பியந்தைக்காந்தாரம்</td>
-            
-                <td data-label="ragam">நவரோசு</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">மேகராகக் குறிஞ்சி</td>
-            
-                <td data-label="ragam">நீலாம்பரி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சாதாரி</td>
-            
-                <td data-label="ragam">பந்துவராளி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">நட்ட ராகம்</td>
-            
-                <td data-label="ragam">பந்துவாராளி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">தக்கராகம்</td>
-            
-                <td data-label="ragam">ஆரபி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">பழந்தக்கராகம்</td>
-            
-                <td data-label="ragam">சுத்த சாவேரி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">இந்தளம்</td>
-            
-                <td data-label="ragam">மாயாமாளவ கெளளை</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">நட்டபாடை</td>
-            
-                <td data-label="ragam">கம்பீர நாட்டை</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">யாழ்முரி</td>
-            
-                <td data-label="ragam">அடாணா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">பாலையாழ்</td>
-            
-                <td data-label="ragam">அரிகாம்போதி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">வேளாவளி</td>
-            
-                <td data-label="ragam">வேளாவளி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சீராகம்</td>
-            
-                <td data-label="ragam">ஸ்ரீராகம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">மலகரி</td>
-            
-                <td data-label="ragam">மலகரி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">நாராயணி</td>
-            
-                <td data-label="ragam">நாராயணி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">பைரவம்</td>
-            
-                <td data-label="ragam">பைரவம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">வராடி</td>
-            
-                <td data-label="ragam">வராளி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">தனாசி</td>
-            
-                <td data-label="ragam">தன்யாசி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">ராமக்ரி</td>
-            
-                <td data-label="ragam">ராமக்கிரியா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">படுமலை</td>
-            
-                <td data-label="ragam">நடபைரவி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">முல்லை</td>
-            
-                <td data-label="ragam">மோகனம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">மருதயாழ்</td>
-            
-                <td data-label="ragam">கரகரப்பிரியா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">செவ்வழியாழ்</td>
-            
-                <td data-label="ragam">தோடி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">கௌடி</td>
-            
-                <td data-label="ragam">கௌரி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">பாடை</td>
-            
-                <td data-label="ragam">பாடி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">குச்சரி(கூர்ஐரி)</td>
-            
-                <td data-label="ragam">கூர்ச்சரி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">நாகத்தொனி</td>
-            
-                <td data-label="ragam">நாகத்தொனி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">பெளரி</td>
-            
-                <td data-label="ragam">பெளளி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சாயரி</td>
-            
-                <td data-label="ragam">சாவேரி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">கேதாளிக்குறிஞ்சி</td>
-            
-                <td data-label="ragam">கேதாரம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">உதயகிரி</td>
-            
-                <td data-label="ragam">ரேவகுப்தி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">நாகராகம்</td>
-            
-                <td data-label="ragam">நாகசுராவளி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சூர்துங்கராகம்</td>
-            
-                <td data-label="ragam">சூரியகாந்தம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">மேகராகம்</td>
-            
-                <td data-label="ragam">கோகிலப்பிரியா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சீகண்டி</td>
-            
-                <td data-label="ragam">சிகண்டி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சாயர்வேளர்கொல்லி</td>
-            
-                <td data-label="ragam">சரசாங்கி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">மன்றல்</td>
-            
-                <td data-label="ragam">நாட்டைக்குறிஞ்சி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">அந்தி</td>
-            
-                <td data-label="ragam">வசந்தா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சந்தி</td>
-            
-                <td data-label="ragam">பூர்விகல்யாணி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சுருதிகாந்தாரம்</td>
-            
-                <td data-label="ragam">காந்தருவமனோகரி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">பாக்கழி</td>
-            
-                <td data-label="ragam">பாலசந்திரிகா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">வியந்தம்</td>
-            
-                <td data-label="ragam">விலாசினி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">ஆநந்தை</td>
-            
-                <td data-label="ragam">போகவசந்தம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">மருள்</td>
-            
-                <td data-label="ragam">கோகிலானந்தி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சாரல்</td>
-            
-                <td data-label="ragam">ரத்னகாந்தி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">குறிஞ்சியாழ்</td>
-            
-                <td data-label="ragam">நடபைரவி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">மண்டலியாழ்</td>
-            
-                <td data-label="ragam">சாருகேசி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">தணுக்காஞ்சி</td>
-            
-                <td data-label="ragam">தேனுகா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">தத்தளபஞ்சமம்</td>
-            
-                <td data-label="ragam">மாளவபஞ்சமம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">திராடம்</td>
-            
-                <td data-label="ragam">திருமூர்த்தி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">வேளர்க்கொல்லி</td>
-            
-                <td data-label="ragam">ரீதிசந்திரிகா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">கின்னராகம்</td>
-            
-                <td data-label="ragam">கீரவாணி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">நிருபதுங்கராகம்</td>
-            
-                <td data-label="ragam">சண்முகப்ரியா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">தாரப்பண்டிறம்</td>
-            
-                <td data-label="ragam">மேசகல்யாணி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">தேவதாளி</td>
-            
-                <td data-label="ragam">சுபபந்துவராளி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">செந்து</td>
-            
-                <td data-label="ragam">சக்கரவாகம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">ஆசாரி</td>
-            
-                <td data-label="ragam">வகுளாபரணம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">தாணு</td>
-            
-                <td data-label="ragam">தாமரசீ</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">விபஞ்சி</td>
-            
-                <td data-label="ragam">மலய மாருதம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சீவனி</td>
-            
-                <td data-label="ragam">சீவணி- ஸ்ரீமணி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">காஞ்சி</td>
-            
-                <td data-label="ragam">மேகாஞ்சி - காஞ்சனாவதி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சதாக்கியம்</td>
-            
-                <td data-label="ragam">ஸ்ரீமஞ்சரி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">வருணம்</td>
-            
-                <td data-label="ragam">தக்கணாதி - வசந்தா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">யாமை</td>
-            
-                <td data-label="ragam">அக்னி கோபம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">மல்லாரி</td>
-            
-                <td data-label="ragam">கம்பீரநாட்டை</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">புங்காளி</td>
-            
-                <td data-label="ragam">கலாவதி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">செருந்தி</td>
-            
-                <td data-label="ragam">புதரஞ்சனி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">அழுங்கு</td>
-            
-                <td data-label="ragam">மனோகரி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சாயை</td>
-            
-                <td data-label="ragam">ஜயந்தசேனா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சோகவராடி</td>
-            
-                <td data-label="ragam">அம்ருத தன்யாசி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">தீபவராடி</td>
-            
-                <td data-label="ragam">கன்னட மாருவ</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">பெரியவராடி</td>
-            
-                <td data-label="ragam">கன்னட சாளவி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">ஆரியவேளர் கொல்லி</td>
-            
-                <td data-label="ragam">சலனவராளி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சித்திரவேளர் கொல்லி</td>
-            
-                <td data-label="ragam">ஆபோகி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">நாணுப்பஞ்சமம்</td>
-            
-                <td data-label="ragam">அம்சவிநோதினி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">தேசாக்ரி</td>
-            
-                <td data-label="ragam">ரஞ்சனி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">மாளவக்ரி</td>
-            
-                <td data-label="ragam">இந்தோளம்</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">ஆரியகுச்சரி</td>
-            
-                <td data-label="ragam">அமிர்தவர்ஷினி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">nan</td>
-            
-                <td data-label="ragam">nan</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">சாவகக் குறிஞ்சி</td>
-            
-                <td data-label="ragam">முக்திதாயினி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">பையுள்காஞ்சி</td>
-            
-                <td data-label="ragam">யோகினி</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">கொண்டற்கிரி</td>
-            
-                <td data-label="ragam">கன்னகௌளை</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">அனுத்திரபஞ்சமம்</td>
-            
-                <td data-label="ragam">கமலா</td>
-            
-            </tr>
-        
-            <tr>
-            
-                <td data-label="pann">அந்தாளிப்பாடை</td>
-            
-                <td data-label="ragam">பஹுதாரி</td>
-            
-            </tr>
-        
-
-        </tbody>
-
-
+      <tbody id="tableBody"></tbody>
     </table>
   </div>
 
-  <nav><ul class="pagination justify-content-center" id="pagination"></ul></nav>
-
+  
+  <div id="pagination" class="d-flex gap-2"></div>
 </div>
 
-
 <script>
-(function(){
-  const table = document.getElementById("bsTable");
-  const searchInput = document.getElementById("tableSearch");
-  const rowsPerPageSelect = document.getElementById("rowsPerPage");
-  const pagination = document.getElementById("pagination");
-  const exportBtn = document.getElementById("exportCSV");
+(function () {
 
-  let currentPage = 1;
-  let rowsPerPage = parseInt(rowsPerPageSelect.value);
-  let sortColumnIndex = null;
+  const headers = "[\"pann\",\"ragam\"]";
+  let rows = "[{\"pann\":\"பஞ்சமம்\",\"ragam\":\"ஆகிரி\"},{\"pann\":\"புறநீர்மை\",\"ragam\":\"பூபாளம்\"},{\"pann\":\"அந்தாளிக்குறிஞ்சி\",\"ragam\":\"சாமா\"},{\"pann\":\"காந்தாரபஞ்சமம்\",\"ragam\":\"கேதார கெளளை\"},{\"pann\":\"தக்கேசி\",\"ragam\":\"காம்போதி\"},{\"pann\":\"செவ்வழி\",\"ragam\":\"எதுகுல காம்போதி\"},{\"pann\":\"வியாழக் குறிஞ்சி\",\"ragam\":\"செளராஷ்டிரம்\"},{\"pann\":\"சீகாமரம்\",\"ragam\":\"நாதநாமக்கிரியை\"},{\"pann\":\"கெளசிகம்\",\"ragam\":\"பைரவி\"},{\"pann\":\"செந்துருத்தி\",\"ragam\":\"மத்யமாவதி\"},{\"pann\":\"பழம் பஞ்சுரம்\",\"ragam\":\"சங்கராபரணம்\"},{\"pann\":\"கொல்லி\",\"ragam\":\"நவரோசு\"},{\"pann\":\"கொல்லிக்கெளவாணம்\",\"ragam\":\"நவரோசு\"},{\"pann\":\"காந்தாரம்\",\"ragam\":\"நவரோசு\"},{\"pann\":\"பியந்தைக்காந்தாரம்\",\"ragam\":\"நவரோசு\"},{\"pann\":\"மேகராகக் குறிஞ்சி\",\"ragam\":\"நீலாம்பரி\"},{\"pann\":\"சாதாரி\",\"ragam\":\"பந்துவராளி\"},{\"pann\":\"நட்ட ராகம்\",\"ragam\":\"பந்துவாராளி\"},{\"pann\":\"தக்கராகம்\",\"ragam\":\"ஆரபி\"},{\"pann\":\"பழந்தக்கராகம்\",\"ragam\":\"சுத்த சாவேரி\"},{\"pann\":\"இந்தளம்\",\"ragam\":\"மாயாமாளவ கெளளை\"},{\"pann\":\"நட்டபாடை\",\"ragam\":\"கம்பீர நாட்டை\"},{\"pann\":\"யாழ்முரி\",\"ragam\":\"அடாணா\"},{\"pann\":\"பாலையாழ்\",\"ragam\":\"அரிகாம்போதி\"},{\"pann\":\"வேளாவளி\",\"ragam\":\"வேளாவளி\"},{\"pann\":\"சீராகம்\",\"ragam\":\"ஸ்ரீராகம்\"},{\"pann\":\"மலகரி\",\"ragam\":\"மலகரி\"},{\"pann\":\"நாராயணி\",\"ragam\":\"நாராயணி\"},{\"pann\":\"பைரவம்\",\"ragam\":\"பைரவம்\"},{\"pann\":\"வராடி\",\"ragam\":\"வராளி\"},{\"pann\":\"தனாசி\",\"ragam\":\"தன்யாசி\"},{\"pann\":\"ராமக்ரி\",\"ragam\":\"ராமக்கிரியா\"},{\"pann\":\"படுமலை\",\"ragam\":\"நடபைரவி\"},{\"pann\":\"முல்லை\",\"ragam\":\"மோகனம்\"},{\"pann\":\"மருதயாழ்\",\"ragam\":\"கரகரப்பிரியா\"},{\"pann\":\"செவ்வழியாழ்\",\"ragam\":\"தோடி\"},{\"pann\":\"கௌடி\",\"ragam\":\"கௌரி\"},{\"pann\":\"பாடை\",\"ragam\":\"பாடி\"},{\"pann\":\"குச்சரி(கூர்ஐரி)\",\"ragam\":\"கூர்ச்சரி\"},{\"pann\":\"நாகத்தொனி\",\"ragam\":\"நாகத்தொனி\"},{\"pann\":\"பெளரி\",\"ragam\":\"பெளளி\"},{\"pann\":\"சாயரி\",\"ragam\":\"சாவேரி\"},{\"pann\":\"கேதாளிக்குறிஞ்சி\",\"ragam\":\"கேதாரம்\"},{\"pann\":\"உதயகிரி\",\"ragam\":\"ரேவகுப்தி\"},{\"pann\":\"நாகராகம்\",\"ragam\":\"நாகசுராவளி\"},{\"pann\":\"சூர்துங்கராகம்\",\"ragam\":\"சூரியகாந்தம்\"},{\"pann\":\"மேகராகம்\",\"ragam\":\"கோகிலப்பிரியா\"},{\"pann\":\"சீகண்டி\",\"ragam\":\"சிகண்டி\"},{\"pann\":\"சாயர்வேளர்கொல்லி\",\"ragam\":\"சரசாங்கி\"},{\"pann\":\"மன்றல்\",\"ragam\":\"நாட்டைக்குறிஞ்சி\"},{\"pann\":\"அந்தி\",\"ragam\":\"வசந்தா\"},{\"pann\":\"சந்தி\",\"ragam\":\"பூர்விகல்யாணி\"},{\"pann\":\"சுருதிகாந்தாரம்\",\"ragam\":\"காந்தருவமனோகரி\"},{\"pann\":\"பாக்கழி\",\"ragam\":\"பாலசந்திரிகா\"},{\"pann\":\"வியந்தம்\",\"ragam\":\"விலாசினி\"},{\"pann\":\"ஆநந்தை\",\"ragam\":\"போகவசந்தம்\"},{\"pann\":\"மருள்\",\"ragam\":\"கோகிலானந்தி\"},{\"pann\":\"சாரல்\",\"ragam\":\"ரத்னகாந்தி\"},{\"pann\":\"குறிஞ்சியாழ்\",\"ragam\":\"நடபைரவி\"},{\"pann\":\"மண்டலியாழ்\",\"ragam\":\"சாருகேசி\"},{\"pann\":\"தணுக்காஞ்சி\",\"ragam\":\"தேனுகா\"},{\"pann\":\"தத்தளபஞ்சமம்\",\"ragam\":\"மாளவபஞ்சமம்\"},{\"pann\":\"திராடம்\",\"ragam\":\"திருமூர்த்தி\"},{\"pann\":\"வேளர்க்கொல்லி\",\"ragam\":\"ரீதிசந்திரிகா\"},{\"pann\":\"கின்னராகம்\",\"ragam\":\"கீரவாணி\"},{\"pann\":\"நிருபதுங்கராகம்\",\"ragam\":\"சண்முகப்ரியா\"},{\"pann\":\"தாரப்பண்டிறம்\",\"ragam\":\"மேசகல்யாணி\"},{\"pann\":\"தேவதாளி\",\"ragam\":\"சுபபந்துவராளி\"},{\"pann\":\"செந்து\",\"ragam\":\"சக்கரவாகம்\"},{\"pann\":\"ஆசாரி\",\"ragam\":\"வகுளாபரணம்\"},{\"pann\":\"தாணு\",\"ragam\":\"தாமரசீ\"},{\"pann\":\"விபஞ்சி\",\"ragam\":\"மலய மாருதம்\"},{\"pann\":\"சீவனி\",\"ragam\":\"சீவணி- ஸ்ரீமணி\"},{\"pann\":\"காஞ்சி\",\"ragam\":\"மேகாஞ்சி - காஞ்சனாவதி\"},{\"pann\":\"சதாக்கியம்\",\"ragam\":\"ஸ்ரீமஞ்சரி\"},{\"pann\":\"வருணம்\",\"ragam\":\"தக்கணாதி - வசந்தா\"},{\"pann\":\"யாமை\",\"ragam\":\"அக்னி கோபம்\"},{\"pann\":\"மல்லாரி\",\"ragam\":\"கம்பீரநாட்டை\"},{\"pann\":\"புங்காளி\",\"ragam\":\"கலாவதி\"},{\"pann\":\"செருந்தி\",\"ragam\":\"புதரஞ்சனி\"},{\"pann\":\"அழுங்கு\",\"ragam\":\"மனோகரி\"},{\"pann\":\"சாயை\",\"ragam\":\"ஜயந்தசேனா\"},{\"pann\":\"சோகவராடி\",\"ragam\":\"அம்ருத தன்யாசி\"},{\"pann\":\"தீபவராடி\",\"ragam\":\"கன்னட மாருவ\"},{\"pann\":\"பெரியவராடி\",\"ragam\":\"கன்னட சாளவி\"},{\"pann\":\"ஆரியவேளர் கொல்லி\",\"ragam\":\"சலனவராளி\"},{\"pann\":\"சித்திரவேளர் கொல்லி\",\"ragam\":\"ஆபோகி\"},{\"pann\":\"நாணுப்பஞ்சமம்\",\"ragam\":\"அம்சவிநோதினி\"},{\"pann\":\"தேசாக்ரி\",\"ragam\":\"ரஞ்சனி\"},{\"pann\":\"மாளவக்ரி\",\"ragam\":\"இந்தோளம்\"},{\"pann\":\"ஆரியகுச்சரி\",\"ragam\":\"அமிர்தவர்ஷினி\"},{\"pann\":\"nan\",\"ragam\":\"nan\"},{\"pann\":\"சாவகக் குறிஞ்சி\",\"ragam\":\"முக்திதாயினி\"},{\"pann\":\"பையுள்காஞ்சி\",\"ragam\":\"யோகினி\"},{\"pann\":\"கொண்டற்கிரி\",\"ragam\":\"கன்னகௌளை\"},{\"pann\":\"அனுத்திரபஞ்சமம்\",\"ragam\":\"கமலா\"},{\"pann\":\"அந்தாளிப்பாடை\",\"ragam\":\"பஹுதாரி\"}]";
+  let filtered = [...rows];
+
+  const body = document.getElementById("tableBody");
+  const searchInput = document.getElementById("searchInput");
+  const rowsSelect = document.getElementById("rowsSelect");
+  const pagination = document.getElementById("pagination");
+  const exportBtn = document.getElementById("csvExport");
+
+  let page = 1;
+  let rowsPerPage = parseInt(rowsSelect.value);
+  let sortKey = null;
   let sortAsc = true;
 
-  function getRows(){ return Array.from(table.querySelectorAll("tbody tr")); }
-
-  function filterRows(){
-    const q = searchInput.value.toLowerCase();
-    getRows().forEach(r => r.style.display = r.innerText.toLowerCase().includes(q) ? "" : "none");
-    currentPage = 1; animateRows(); renderTable();
+  
+  
+  
+  function highlight(text, query) {
+    if (!query) return text;
+    return text.replace(new RegExp(query, "gi"),
+      match => `<span class="highlight">${match}</span>`);
   }
 
-  function sortRows(idx){
-    const rows = getRows();
-    sortAsc = sortColumnIndex === idx ? !sortAsc : true;
-    sortColumnIndex = idx;
+  
+  
+  
+  function tamilSort(a, b) {
+    return a.localeCompare(b, "ta", { sensitivity: "base" });
+  }
 
-    rows.sort((a,b)=>{
-      const A = a.children[idx].innerText.toLowerCase();
-      const B = b.children[idx].innerText.toLowerCase();
-      return sortAsc ? A.localeCompare(B) : B.localeCompare(A);
+  
+  
+  
+  function renderTable() {
+    body.innerHTML = "";
+    const q = searchInput.value.trim().toLowerCase();
+
+    const start = (page - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    const pageRows = filtered.slice(start, end);
+
+    pageRows.forEach((row, i) => {
+      let tr = document.createElement("tr");
+
+      headers.forEach(h => {
+        const val = row[h] || "";
+        tr.innerHTML += `
+          <td>${highlight(val.toString(), q)}</td>
+        `;
+      });
+
+      body.appendChild(tr);
     });
 
-    rows.forEach(r => table.querySelector("tbody").appendChild(r));
-    animateRows();
+    renderPagination();
+  }
+
+  
+  
+  
+  function applySearch() {
+    const q = searchInput.value.toLowerCase();
+    filtered = rows.filter(row =>
+      Object.values(row).some(val =>
+        val.toLowerCase().includes(q)
+      )
+    );
+    page = 1;
     renderTable();
   }
 
-  function renderTable(){
-    const rows = getRows().filter(r => r.style.display !== "none");
-    const total = rows.length;
-    const start = (currentPage - 1)*rowsPerPage;
-    const end = start + rowsPerPage;
+  
+  
+  
+  function sortByColumn(headIndex) {
+    const key = headers[headIndex];
+    sortAsc = sortKey === key ? !sortAsc : true;
+    sortKey = key;
 
-    rows.forEach((r,i)=>r.style.display = i>=start && i<end ? "" : "none");
-    renderPagination(total);
+    filtered.sort((a, b) => {
+      const A = a[key] || "";
+      const B = b[key] || "";
+      const cmp = tamilSort(A, B);
+      return sortAsc ? cmp : -cmp;
+    });
+
+    renderTable();
   }
 
-  function renderPagination(total){
+  
+  
+  
+  function renderPagination() {
     pagination.innerHTML = "";
-    const pages = Math.ceil(total/rowsPerPage);
-    for(let i=1;i<=pages;i++){
-      const li=document.createElement("li");
-      li.className="page-item"+(i===currentPage?" active":"");
-      const a=document.createElement("a");
-      a.className="page-link"; a.href="#"; a.textContent=i;
-      a.onclick=e=>{e.preventDefault();currentPage=i;animateRows();renderTable();}
-      li.appendChild(a); pagination.appendChild(li);
+
+    const total = filtered.length;
+    const pages = Math.ceil(total / rowsPerPage);
+
+    for (let i = 1; i <= pages; i++) {
+      const btn = document.createElement("button");
+      btn.className =
+        "btn btn-sm " +
+        (i === page
+          ? "btn-primary"
+          : "btn-outline-secondary");
+
+      btn.innerText = i;
+      btn.onclick = () => {
+        page = i;
+        renderTable();
+      };
+
+      pagination.appendChild(btn);
     }
   }
 
-  function animateRows(){
-    getRows().forEach(r=>{
-      r.classList.remove("table-row-anim");
-      void r.offsetWidth;
-      r.classList.add("table-row-anim");
-    });
-  }
-
-  function exportCSV(){
+  
+  
+  
+  exportBtn.onclick = () => {
     let csv = [];
-    getRows().forEach(row=>{
-      const cols = Array.from(row.children).map(td=> `"${td.innerText}"`);
-      csv.push(cols.join(","));
+    csv.push(headers.join(","));
+    rows.forEach(r => {
+      csv.push(headers.map(h => `"${(r[h] || "").replace(/"/g, '""')}"`).join(","));
     });
-    const blob = new Blob([csv.join("\n")], {type:"text/csv"});
-    const a=document.createElement("a");
-    a.href=URL.createObjectURL(blob); a.download="table.csv"; a.click();
-  }
 
-  searchInput.oninput = filterRows;
-  rowsPerPageSelect.onchange = ()=>{ rowsPerPage=parseInt(rowsPerPageSelect.value); renderTable(); };
-  exportBtn.onclick = exportCSV;
+    const blob = new Blob([csv.join("\n")], { type: "text/csv" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "table.csv";
+    a.click();
+  };
 
-  table.querySelectorAll("thead th").forEach((th,idx)=> th.onclick=()=>sortRows(idx));
+  
+  
+  
+  searchInput.oninput = applySearch;
 
-  renderTable();
+  rowsSelect.onchange = () => {
+    rowsPerPage = parseInt(rowsSelect.value);
+    renderTable();
+  };
+
+  
+  document.querySelectorAll("th.sortable").forEach((th, i) => {
+    th.onclick = () => sortByColumn(i);
+  });
+
+  
+  
+  
+  applySearch();
+
 })();
 </script>
 

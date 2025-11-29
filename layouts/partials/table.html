@@ -1,189 +1,248 @@
+
 <style>
-/* Smooth row animation */
-.table-row-anim { animation: fadeIn 0.25s ease-in-out; }
-@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  /* Sticky header */
+  .table-responsive {
+    max-height: 450px;
+    overflow-y: auto;
+  }
+  thead th {
+    position: sticky;
+    top: 0;
+    background: #212529;
+    color: #fff;
+    z-index: 10;
+  }
 
-/* Sticky header */
-.table-responsive {
-  max-height: 450px;
-  overflow-y: auto;
-  position: relative;
-}
-thead th {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: #212529;
-  color: white;
-}
+  /* Zebra rows */
+  tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
 
-/* Mobile Responsive (Stack rows) */
-@media (max-width: 768px) {
-  table thead {
-    display: none;
+  /* Highlight search matches */
+  .highlight {
+    background: #ffe066;
+    padding: 2px 4px;
+    border-radius: 4px;
   }
-  table tbody tr {
-    display: block;
-    margin-bottom: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
+
+  /* Floating pagination bar */
+  #pagination {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #dee2e6;
+    padding: 6px 15px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 50;
   }
-  table tbody td {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 10px;
-    border: none;
-    border-bottom: 1px solid #eee;
-  }
-  table tbody td:last-child {
-    border-bottom: none;
-  }
-  td::before {
-    font-weight: 600;
-    text-transform: capitalize;
-    content: attr(data-label);
-  }
-}
+
 </style>
 
-<div class="card shadow p-3">
+<div class="card shadow p-4 mb-5">
 
-  <!-- TOP CONTROLS -->
-  <div class="d-flex justify-content-between mb-3 flex-wrap gap-2">
-    <input type="text" id="tableSearch" class="form-control w-25" placeholder="Search...">
+  <!-- TOP BAR -->
+  <div class="d-flex justify-content-between flex-wrap mb-3 gap-3">
+
+    <!-- Search -->
+    <input id="searchInput" type="text" class="form-control w-auto" style="min-width:250px"
+           placeholder="Search...">
 
     <div class="d-flex gap-2">
-      <select id="rowsPerPage" class="form-select w-auto">
+
+      <!-- Rows per page -->
+      <select id="rowsSelect" class="form-select w-auto">
         <option value="5">5 rows</option>
         <option value="10" selected>10 rows</option>
         <option value="20">20 rows</option>
       </select>
 
-      <button id="exportCSV" class="btn btn-success">Export CSV</button>
+      <!-- Export CSV -->
+      <button id="csvExport" class="btn btn-success">
+        Export CSV
+      </button>
     </div>
   </div>
 
   <!-- TABLE -->
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped" id="bsTable">
-
-      <thead class="table-dark">
+  <div class="table-responsive border rounded">
+    <table class="table table-hover table-borderless mb-0" id="mainTable">
+      <thead>
         <tr>
           {{ range .headers }}
-            <th class="sortable" style="cursor:pointer;">{{ . }} ▲▼</th>
+            <th class="sortable" data-key="{{ . }}" style="cursor:pointer;">
+              {{ . }} <span class="opacity-50">▲▼</span>
+            </th>
           {{ end }}
         </tr>
       </thead>
 
-        <tbody>
-        {{ $headers := .headers }}
-        {{ $rows := .rows }}
-
-        {{ range $row := $rows }}
-            <tr>
-            {{ range $h := $headers }}
-                <td data-label="{{ $h }}">{{ index $row $h }}</td>
-            {{ end }}
-            </tr>
-        {{ end }}
-
-        </tbody>
-
-
+      <tbody id="tableBody"></tbody>
     </table>
   </div>
 
-  <nav><ul class="pagination justify-content-center" id="pagination"></ul></nav>
-
+  <!-- FLOATING PAGINATION -->
+  <div id="pagination" class="d-flex gap-2"></div>
 </div>
 
-
 <script>
-(function(){
-  const table = document.getElementById("bsTable");
-  const searchInput = document.getElementById("tableSearch");
-  const rowsPerPageSelect = document.getElementById("rowsPerPage");
-  const pagination = document.getElementById("pagination");
-  const exportBtn = document.getElementById("exportCSV");
+(function () {
 
-  let currentPage = 1;
-  let rowsPerPage = parseInt(rowsPerPageSelect.value);
-  let sortColumnIndex = null;
+  const headers = {{ .headers | jsonify }};
+  let rows = {{ .rows | jsonify }};
+  let filtered = [...rows];
+
+  const body = document.getElementById("tableBody");
+  const searchInput = document.getElementById("searchInput");
+  const rowsSelect = document.getElementById("rowsSelect");
+  const pagination = document.getElementById("pagination");
+  const exportBtn = document.getElementById("csvExport");
+
+  let page = 1;
+  let rowsPerPage = parseInt(rowsSelect.value);
+  let sortKey = null;
   let sortAsc = true;
 
-  function getRows(){ return Array.from(table.querySelectorAll("tbody tr")); }
-
-  function filterRows(){
-    const q = searchInput.value.toLowerCase();
-    getRows().forEach(r => r.style.display = r.innerText.toLowerCase().includes(q) ? "" : "none");
-    currentPage = 1; animateRows(); renderTable();
+  //-------------------------------------------------------------------
+  // Tamil-safe highlight
+  //-------------------------------------------------------------------
+  function highlight(text, query) {
+    if (!query) return text;
+    return text.replace(new RegExp(query, "gi"),
+      match => `<span class="highlight">${match}</span>`);
   }
 
-  function sortRows(idx){
-    const rows = getRows();
-    sortAsc = sortColumnIndex === idx ? !sortAsc : true;
-    sortColumnIndex = idx;
+  //-------------------------------------------------------------------
+  // Tamil sorting
+  //-------------------------------------------------------------------
+  function tamilSort(a, b) {
+    return a.localeCompare(b, "ta", { sensitivity: "base" });
+  }
 
-    rows.sort((a,b)=>{
-      const A = a.children[idx].innerText.toLowerCase();
-      const B = b.children[idx].innerText.toLowerCase();
-      return sortAsc ? A.localeCompare(B) : B.localeCompare(A);
+  //-------------------------------------------------------------------
+  // Render table
+  //-------------------------------------------------------------------
+  function renderTable() {
+    body.innerHTML = "";
+    const q = searchInput.value.trim().toLowerCase();
+
+    const start = (page - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    const pageRows = filtered.slice(start, end);
+
+    pageRows.forEach((row, i) => {
+      let tr = document.createElement("tr");
+
+      headers.forEach(h => {
+        const val = row[h] || "";
+        tr.innerHTML += `
+          <td>${highlight(val.toString(), q)}</td>
+        `;
+      });
+
+      body.appendChild(tr);
     });
 
-    rows.forEach(r => table.querySelector("tbody").appendChild(r));
-    animateRows();
+    renderPagination();
+  }
+
+  //-------------------------------------------------------------------
+  // Search filter
+  //-------------------------------------------------------------------
+  function applySearch() {
+    const q = searchInput.value.toLowerCase();
+    filtered = rows.filter(row =>
+      Object.values(row).some(val =>
+        val.toLowerCase().includes(q)
+      )
+    );
+    page = 1;
     renderTable();
   }
 
-  function renderTable(){
-    const rows = getRows().filter(r => r.style.display !== "none");
-    const total = rows.length;
-    const start = (currentPage - 1)*rowsPerPage;
-    const end = start + rowsPerPage;
+  //-------------------------------------------------------------------
+  // Sorting
+  //-------------------------------------------------------------------
+  function sortByColumn(headIndex) {
+    const key = headers[headIndex];
+    sortAsc = sortKey === key ? !sortAsc : true;
+    sortKey = key;
 
-    rows.forEach((r,i)=>r.style.display = i>=start && i<end ? "" : "none");
-    renderPagination(total);
+    filtered.sort((a, b) => {
+      const A = a[key] || "";
+      const B = b[key] || "";
+      const cmp = tamilSort(A, B);
+      return sortAsc ? cmp : -cmp;
+    });
+
+    renderTable();
   }
 
-  function renderPagination(total){
+  //-------------------------------------------------------------------
+  // Floating pagination
+  //-------------------------------------------------------------------
+  function renderPagination() {
     pagination.innerHTML = "";
-    const pages = Math.ceil(total/rowsPerPage);
-    for(let i=1;i<=pages;i++){
-      const li=document.createElement("li");
-      li.className="page-item"+(i===currentPage?" active":"");
-      const a=document.createElement("a");
-      a.className="page-link"; a.href="#"; a.textContent=i;
-      a.onclick=e=>{e.preventDefault();currentPage=i;animateRows();renderTable();}
-      li.appendChild(a); pagination.appendChild(li);
+
+    const total = filtered.length;
+    const pages = Math.ceil(total / rowsPerPage);
+
+    for (let i = 1; i <= pages; i++) {
+      const btn = document.createElement("button");
+      btn.className =
+        "btn btn-sm " +
+        (i === page
+          ? "btn-primary"
+          : "btn-outline-secondary");
+
+      btn.innerText = i;
+      btn.onclick = () => {
+        page = i;
+        renderTable();
+      };
+
+      pagination.appendChild(btn);
     }
   }
 
-  function animateRows(){
-    getRows().forEach(r=>{
-      r.classList.remove("table-row-anim");
-      void r.offsetWidth;
-      r.classList.add("table-row-anim");
-    });
-  }
-
-  function exportCSV(){
+  //-------------------------------------------------------------------
+  // CSV Export
+  //-------------------------------------------------------------------
+  exportBtn.onclick = () => {
     let csv = [];
-    getRows().forEach(row=>{
-      const cols = Array.from(row.children).map(td=> `"${td.innerText}"`);
-      csv.push(cols.join(","));
+    csv.push(headers.join(","));
+    rows.forEach(r => {
+      csv.push(headers.map(h => `"${(r[h] || "").replace(/"/g, '""')}"`).join(","));
     });
-    const blob = new Blob([csv.join("\n")], {type:"text/csv"});
-    const a=document.createElement("a");
-    a.href=URL.createObjectURL(blob); a.download="table.csv"; a.click();
-  }
 
-  searchInput.oninput = filterRows;
-  rowsPerPageSelect.onchange = ()=>{ rowsPerPage=parseInt(rowsPerPageSelect.value); renderTable(); };
-  exportBtn.onclick = exportCSV;
+    const blob = new Blob([csv.join("\n")], { type: "text/csv" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "table.csv";
+    a.click();
+  };
 
-  table.querySelectorAll("thead th").forEach((th,idx)=> th.onclick=()=>sortRows(idx));
+  //-------------------------------------------------------------------
+  // Events
+  //-------------------------------------------------------------------
+  searchInput.oninput = applySearch;
 
-  renderTable();
+  rowsSelect.onchange = () => {
+    rowsPerPage = parseInt(rowsSelect.value);
+    renderTable();
+  };
+
+  // Sorting events
+  document.querySelectorAll("th.sortable").forEach((th, i) => {
+    th.onclick = () => sortByColumn(i);
+  });
+
+  //-------------------------------------------------------------------
+  // INITIAL RENDER
+  //-------------------------------------------------------------------
+  applySearch();
+
 })();
 </script>
