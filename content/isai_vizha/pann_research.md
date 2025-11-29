@@ -211,10 +211,10 @@ table_rows:
     ragam: இந்தோளம்
   - pann: ஆரியகுச்சரி
     ragam: அமிர்தவர்ஷினி
-  - pann: nan
-    ragam: nan
   - pann: சாவகக் குறிஞ்சி
     ragam: முக்திதாயினி
+  - pann: முதிர்ந்த குறிஞ்சி
+    ragam: சுத்த தன்யாசி
   - pann: பையுள்காஞ்சி
     ragam: யோகினி
   - pann: கொண்டற்கிரி
@@ -223,7 +223,6 @@ table_rows:
     ragam: கமலா
   - pann: அந்தாளிப்பாடை
     ragam: பஹுதாரி
-    
 layout: "pann_research"
 type: "page"
 ---
