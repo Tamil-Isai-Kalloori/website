@@ -285,9 +285,9 @@ collections:
                 name: "rows"
                 widget: "list"
                 fields:
-                  - label: "Pann"
-                    name: "pann"
+                  - label: "Name"
+                    name: "name"
                     widget: "string"
-                  - label: "Ragam"
-                    name: "ragam"
+                  - label: "Year"
+                    name: "year"
                     widget: "string"
