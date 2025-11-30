@@ -370,14 +370,14 @@ thead th {
 @media (max-width: 576px) {
 
    
-  #mainTable td,
-  #mainTable th {
+  .mainTable td,
+  .mainTable th {
     font-size: 11px;
     padding: 6px 8px;
   }
 
    
-  #searchInput {
+  .searchInput {
     margin-bottom: 14px;
     width: 100% !important;
     font-size: 14px;
@@ -427,11 +427,41 @@ thead th {
   <div class="pt-4 mb-5" id="isai_per_arignar-wrapper">
 
     
-      <h4 class="mb-3">Isai Per Arignar Award</h4>
+<div style="display:flex; align-items:center; margin:40px 0;">
+
+  
+  <div style="
+    flex:1;
+    height:3px;
+    background:linear-gradient(to right, transparent, #743526, transparent);
+    border-radius:50px;
+  "></div>
+
+  
+  <span style="
+    padding:0 20px;
+    font-size:22px;
+    font-weight:600;
+    color:#000;
+    white-space:nowrap;
+  ">
+    Isai Per Arignar Award
+  </span>
+
+  
+  <div style="
+    flex:1;
+    height:3px;
+    background:linear-gradient(to right, transparent, #743526, transparent);
+    border-radius:50px;
+  "></div>
+
+</div>
+
     
 
     <div class="d-flex justify-content-between flex-wrap mb-3 gap-3">
-      <input id="isai_per_arignar-searchInput" type="text" class="form-control w-auto"
+      <input id="isai_per_arignar-searchInput" type="text" class="searchInput form-control w-auto"
              style="min-width:250px" placeholder="Search...">
 
       <div class="d-flex export-gap">
@@ -447,7 +477,7 @@ thead th {
       </div>
     </div>
 
-    <table class="table table-hover table-borderless mb-0" id="isai_per_arignar-mainTable">
+    <table class="table table-hover table-borderless mb-0 mainTable" id="isai_per_arignar-mainTable">
       <thead class="table-dark">
         <tr>
           <th>S.No</th>
@@ -471,14 +501,46 @@ thead th {
 
   </div>
 
+
+
   <div class="pt-4 mb-5" id="pann_isai_arignar-wrapper">
 
     
-      <h4 class="mb-3">Pann Isai Arignar Award</h4>
+<div style="display:flex; align-items:center; margin:40px 0;">
+
+  
+  <div style="
+    flex:1;
+    height:3px;
+    background:linear-gradient(to right, transparent, #743526, transparent);
+    border-radius:50px;
+  "></div>
+
+  
+  <span style="
+    padding:0 20px;
+    font-size:22px;
+    font-weight:600;
+    color:#000;
+    white-space:nowrap;
+  ">
+    Pann Isai Arignar Award
+  </span>
+
+  
+  <div style="
+    flex:1;
+    height:3px;
+    background:linear-gradient(to right, transparent, #743526, transparent);
+    border-radius:50px;
+  "></div>
+
+</div>
+
     
 
     <div class="d-flex justify-content-between flex-wrap mb-3 gap-3">
-      <input id="pann_isai_arignar-searchInput" type="text" class="form-control w-auto"
+      <input id="pann_isai_arignar-searchInput" type="text" class="searchInput form-control w-auto"
              style="min-width:250px" placeholder="Search...">
 
       <div class="d-flex export-gap">
@@ -494,7 +556,7 @@ thead th {
       </div>
     </div>
 
-    <table class="table table-hover table-borderless mb-0" id="pann_isai_arignar-mainTable">
+    <table class="table table-hover table-borderless mb-0 mainTable" id="pann_isai_arignar-mainTable">
       <thead class="table-dark">
         <tr>
           <th>S.No</th>
@@ -517,6 +579,8 @@ thead th {
     </nav>
 
   </div>
+
+
 
 
 <script>

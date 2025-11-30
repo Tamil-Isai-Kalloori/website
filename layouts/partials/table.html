@@ -132,14 +132,14 @@ thead th {
 @media (max-width: 576px) {
 
   /* Reduce table font size */
-  #mainTable td,
-  #mainTable th {
+  .mainTable td,
+  .mainTable th {
     font-size: 11px;
     padding: 6px 8px;
   }
 
   /* Make search input smaller */
-  #searchInput {
+  .searchInput {
     margin-bottom: 14px;
     width: 100% !important;
     font-size: 14px;
@@ -189,11 +189,41 @@ thead th {
   <div class="pt-4 mb-5" id="{{ .id }}-wrapper">
 
     {{ with .name }}
-      <h4 class="mb-3">{{ . }}</h4>
+<div style="display:flex; align-items:center; margin:40px 0;">
+
+  <!-- Left gradient line -->
+  <div style="
+    flex:1;
+    height:3px;
+    background:linear-gradient(to right, transparent, #743526, transparent);
+    border-radius:50px;
+  "></div>
+
+  <!-- Center label (your Hugo variable) -->
+  <span style="
+    padding:0 20px;
+    font-size:22px;
+    font-weight:600;
+    color:#000;
+    white-space:nowrap;
+  ">
+    {{ . }}
+  </span>
+
+  <!-- Right gradient line -->
+  <div style="
+    flex:1;
+    height:3px;
+    background:linear-gradient(to right, transparent, #743526, transparent);
+    border-radius:50px;
+  "></div>
+
+</div>
+
     {{ end }}
 
     <div class="d-flex justify-content-between flex-wrap mb-3 gap-3">
-      <input id="{{ .id }}-searchInput" type="text" class="form-control w-auto"
+      <input id="{{ .id }}-searchInput" type="text" class="searchInput form-control w-auto"
              style="min-width:250px" placeholder="Search...">
 
       <div class="d-flex export-gap">
@@ -209,7 +239,7 @@ thead th {
       </div>
     </div>
 
-    <table class="table table-hover table-borderless mb-0" id="{{ .id }}-mainTable">
+    <table class="table table-hover table-borderless mb-0 mainTable" id="{{ .id }}-mainTable">
       <thead class="table-dark">
         <tr>
           <th>S.No</th>
@@ -228,6 +258,8 @@ thead th {
     </nav>
 
   </div>
+
+
 {{ end }}
 
 <script>

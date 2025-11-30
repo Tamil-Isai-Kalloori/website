@@ -384,14 +384,14 @@ thead th {
 @media (max-width: 576px) {
 
    
-  #mainTable td,
-  #mainTable th {
+  .mainTable td,
+  .mainTable th {
     font-size: 11px;
     padding: 6px 8px;
   }
 
    
-  #searchInput {
+  .searchInput {
     margin-bottom: 14px;
     width: 100% !important;
     font-size: 14px;
@@ -443,7 +443,7 @@ thead th {
     
 
     <div class="d-flex justify-content-between flex-wrap mb-3 gap-3">
-      <input id="pann_research-searchInput" type="text" class="form-control w-auto"
+      <input id="pann_research-searchInput" type="text" class="searchInput form-control w-auto"
              style="min-width:250px" placeholder="Search...">
 
       <div class="d-flex export-gap">
@@ -459,7 +459,7 @@ thead th {
       </div>
     </div>
 
-    <table class="table table-hover table-borderless mb-0" id="pann_research-mainTable">
+    <table class="table table-hover table-borderless mb-0 mainTable" id="pann_research-mainTable">
       <thead class="table-dark">
         <tr>
           <th>S.No</th>
@@ -482,6 +482,8 @@ thead th {
     </nav>
 
   </div>
+
+
 
 
 <script>
