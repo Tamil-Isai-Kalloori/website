@@ -17,17 +17,15 @@
         </div>
       </div> -->
 
-      {{ $paragraphFile := .Site.GetPage "isai_vizha/pann_research/paragraphs.md" }}
-         <img src="{{  $paragraphFile.Params.research_image }}" alt="Research Image" class="img-fluid mb-4" style="width: 100%;" />
-        {{ $paragraphs := split $paragraphFile.Params.paragraphs "\n" }}
+         <img src="{{  .Params.research_image }}" alt="Research Image" class="img-fluid mb-4" style="width: 100%;" />
+        {{ $paragraphs := split .Params.paragraphs "\n" }}
         {{ range $paragraphs }}
           <p style="text-align: justify; line-height: 1.6; margin-bottom: 1rem;" class="research-paragraph">{{ . }}</p>
         {{ end }}
 
 
-      {{ $tablesFile := .Site.GetPage "isai_vizha/pann_research/tables.md" }}
+          {{ partial "table.html" (dict "tables" .Params.tables) }}
 
-          {{ partial "table.html" (dict "tables" $tablesFile.Params.tables) }}
 
     </div>
   </section>

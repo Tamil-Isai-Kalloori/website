@@ -224,16 +224,21 @@ collections:
         file: "content/isai_vizha/pann_research/tables.md"
         format: "frontmatter"
         fields:
-          - label: "Table Headers"
-            name: "table_headers"
-            widget: "list"
-            field:
-              label: "Header"
-              name: "header"
-              widget: "string"
-          - label: "Table"
-            name: "table_rows"
+          - label: "Tables"
+            name: "tables"
             widget: "list"
             fields:
-              - { label: "Pann", name: "pann", widget: "string" }
-              - { label: "Ragam", name: "ragam", widget: "string" }
+              - label: "Table Name"
+                name: "name"
+                widget: "string"
+
+              - label: "Rows"
+                name: "rows"
+                widget: "list"
+                fields:
+                  - label: "Pann"
+                    name: "pann"
+                    widget: "string"
+                  - label: "Ragam"
+                    name: "ragam"
+                    widget: "string"
