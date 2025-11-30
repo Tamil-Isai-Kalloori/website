@@ -1,18 +1,4 @@
 ---
-title : 'Awards'
-hero_image: /uploads/rajasir_banner_compressed.png
-hero_title: Awards
-breadcrumbs:
-  - name: Home
-    url: /
-  - name: Isai Vizha
-    url: /isai_vizha/
-  - name: Awards
-    url: /isai_vizha/awards/
-image: /uploads/tamil_isai_kalloori.jpeg
-paragraphs: >+
-  தமிழிசையினைப் பரப்பும் நோக்கத்துடன் ஆண்டுதோறும் டிசம்பர் மாதத்தில் 12 நாட்களுக்குத் தமிழிசை விழா நடத்தப்பட்டு வருகிறது. ஆண்டுதோறும் தலை சிறந்த இசைக் கலைஞர் ஒருவரைத் தேர்ந்து "இசைப்பேரறிஞர்" என்னும் விருதும், பொற்பதக்கம், பொன்முடிப்பும் இசை விழா தொடக்க நாளன்று அளிக்கப்பெறுகிறது.
-
 tables:
   - id: isai_per_arignar
     name: Isai Per Arignar Award
@@ -176,8 +162,4 @@ tables:
         year: 2018
       - name: திரு. பாலசுப்ரமணிய ஓதுவார்
         year: 2019
-
-
-layout: "awards"
-type: "page"
 ---

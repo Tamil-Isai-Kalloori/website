@@ -242,13 +242,27 @@ collections:
                   - label: "Ragam"
                     name: "ragam"
                     widget: "string"
-## pann research
+## awards
   - name: "Isai Vizha Awards"
     label: "Isai Vizha Awards"
     files: 
+      - label: "Hero Section"
+        name: "awards_hero_section"
+        file: "content/isai_vizha/awards/_index.md"
+        format: "frontmatter"
+        fields:
+          - { label: "Image", name: "hero_image", widget: "image" }
+          - { label: "Title", name: "hero_title", widget: "string" }
+          - label: "Breadcrumbs"
+            name: "breadcrumbs"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+ 
       - label: "Description"
         name: "awards_paragraphs"
-        file: "content/isai_vizha/awards.md"
+        file: "content/isai_vizha/awards/paragraphs.md"
         format: "frontmatter"
         fields:
           - { label: "Image", name: "image", widget: "image" }
@@ -256,7 +270,7 @@ collections:
  
       - label: "Table Data"
         name: "awards_table_data"
-        file: "content/isai_vizha/awards.md"
+        file: "content/isai_vizha/awards/tables.md"
         format: "frontmatter"
         fields:
           - label: "Tables"
