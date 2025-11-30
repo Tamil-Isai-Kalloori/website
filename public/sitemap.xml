@@ -20,6 +20,8 @@
   </url><url>
     <loc>//localhost:1313/isai_vizha/pann_research/tables/</loc>
   </url><url>
+    <loc>//localhost:1313/isai_vizha/awards/</loc>
+  </url><url>
     <loc>//localhost:1313/blog/</loc>
   </url><url>
     <loc>//localhost:1313/categories/</loc>
@@ -39,8 +41,6 @@
     <loc>//localhost:1313/isai_vizha/pann_research/</loc>
   </url><url>
     <loc>//localhost:1313/home/slider/</loc>
-  </url><url>
-    <loc>//localhost:1313/isai_vizha/awards/</loc>
   </url><url>
     <loc>//localhost:1313/isai_vizha/special_guest/</loc>
   </url><url>
