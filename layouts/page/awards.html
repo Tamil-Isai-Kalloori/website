@@ -17,7 +17,7 @@
         </div>
       </div> -->
 
-         <img src="{{  .Params.research_image }}" alt="Research Image" class="img-fluid mb-4" style="width: 100%;" />
+         <img src="{{  .Params.image }}" alt="Research Image" class="img-fluid mb-4" style="width: 100%;" />
         {{ $paragraphs := split .Params.paragraphs "\n" }}
         {{ range $paragraphs }}
           <p style="text-align: justify; line-height: 1.6; margin-bottom: 1rem;" class="research-paragraph">{{ . }}</p>
