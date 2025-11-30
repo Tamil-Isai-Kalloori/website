@@ -11,23 +11,25 @@
   <section class="ftco-section">
     <div class="container-fluid px-4">
       <!-- Pann Isai Research title -->
-      <div class="row justify-content-center mb-5 pb-2">
+      <!-- <div class="row justify-content-center mb-5 pb-2">
         <div class="col-md-7 text-center heading-section ftco-animate">
           <h3 class="mb-2">Research</h3>
         </div>
-      </div>
-      <img src="{{ .Params.research_image }}" alt="Research Image" class="img-fluid mb-4" />
-      <p>
-        {{ $paragraphs := split .Params.paragraphs "\n" }}
+      </div> -->
+
+      {{ $paragraphFile := .Site.GetPage "isai_vizha/pann_research/paragraphs.md" }}
+         <img src="{{  $paragraphFile.Params.research_image }}" alt="Research Image" class="img-fluid mb-4" style="width: 100%;" />
+        {{ $paragraphs := split $paragraphFile.Params.paragraphs "\n" }}
         {{ range $paragraphs }}
-          <p style="text-align: justify; line-height: 1.6; margin-bottom: 1rem;">{{ . }}</p>
+          <p style="text-align: justify; line-height: 1.6; margin-bottom: 1rem;" class="research-paragraph">{{ . }}</p>
         {{ end }}
 
-      </p>
+
+      {{ $tablesFile := .Site.GetPage "isai_vizha/pann_research/tables.md" }}
 
           {{ partial "table.html" (dict
-              "headers" .Params.table_headers
-              "rows" .Params.table_rows
+              "headers" $tablesFile.Params.table_headers
+              "rows" $tablesFile.Params.table_rows
           ) }}
     
 
@@ -36,6 +38,16 @@
 </div>
 
 {{ partial "footer.html" .  }}
-
+<style>
+  .research-paragraph {
+    font-size: 1rem;
+  }
+  @media screen and (max-width: 576px) {
+    .research-paragraph {
+      font-size: 0.8rem;
+    }
+    
+  }
+</style>
 
 {{ end }}

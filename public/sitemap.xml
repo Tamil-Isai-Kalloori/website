@@ -5,7 +5,20 @@
     <loc>//localhost:1313/</loc>
     <lastmod>2025-11-23T06:00:55+00:00</lastmod>
   </url><url>
+    <loc>//localhost:1313/reservation/</loc>
+    <lastmod>2025-11-23T06:00:55+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog-single/</loc>
+    <lastmod>2025-11-23T06:00:48+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/contact/</loc>
+    <lastmod>2025-11-23T06:00:42+00:00</lastmod>
+  </url><url>
     <loc>//localhost:1313/isai_vizha/isai_vizha_paragraphs/</loc>
+  </url><url>
+    <loc>//localhost:1313/isai_vizha/pann_research/paragraphs/</loc>
+  </url><url>
+    <loc>//localhost:1313/isai_vizha/pann_research/tables/</loc>
   </url><url>
     <loc>//localhost:1313/blog/</loc>
   </url><url>

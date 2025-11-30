@@ -12,6 +12,19 @@
     color: #fff;
     z-index: 10;
   }
+  .styled-select option:hover,
+  .styled-select option:checked,
+  .styled-select option:focus {
+    background-color: #743526 !important;
+    color: white !important;
+  }
+
+  .styled-select option:focus {
+  outline: none;
+  background-color: #743526 !important;
+  color: white !important;
+}
+
 
   /* Zebra rows */
   tbody tr:nth-child(even) {
@@ -117,9 +130,63 @@ thead th {
     border: 1px solid #3D1A1C;
 }
 
+/* MAKE EVERYTHING SMALLER ON MOBILE (REVERT COMPLEX CHANGES) */
+@media (max-width: 576px) {
+
+  /* Reduce table font size */
+  #mainTable td,
+  #mainTable th {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  /* Make search input smaller */
+  #searchInput {
+    margin-bottom: 14px;
+    width: 100% !important;
+    font-size: 14px;
+    padding: 6px 10px;
+    min-width: 180px;
+  }
+
+  /* Smaller select dropdown */
+  .styled-select {
+    width: 45%;
+    padding: 6px 28px 6px 8px;
+    font-size: 14px;
+    border-width: 1.5px;
+  }
+
+  /* Smaller export button */
+  .export-btn {
+    width: 45%;
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  /* Reduce top bar spacing */
+  .export-gap {
+    width: 100%;
+    justify-content:space-between;
+    /* gap: 6px; */
+  }
+
+  /* Table header smaller */
+  thead th {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  /* Pagination smaller */
+  .pagination .page-link {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+}
+
 </style>
 
-<div class="p-4 mb-5">
+<div class="pt-4 mb-5">
 
   <!-- TOP BAR -->
   <div class="d-flex justify-content-between flex-wrap mb-3 gap-3">
@@ -161,6 +228,7 @@ thead th {
 
       <tbody id="tableBody"></tbody>
     </table>
+
 
 
 <!-- NORMAL PAGINATION (under the table) -->

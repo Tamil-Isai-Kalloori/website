@@ -193,7 +193,47 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Content", name: "content", widget: "text" }
               - { label: "Link", name: "link", widget: "string" }
+## pann research
+  - name: "Pann_Research"
+    label: "Pann Research"
+    files: 
+      - label: "Pann isai Hero Section"
+        name: "pann_isai_hero_section"
+        file: "content/isai_vizha/pann_research/_index.md"
+        format: "yaml"
+        fields:
+          - { label: "Image", name: "hero_image", widget: "image" }
+          - { label: "Title", name: "hero_title", widget: "string" }
+          - label: "Breadcrumbs"
+            name: "breadcrumbs"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
 
-
-
-
+      - label: "Description"
+        name: "pann_research_paragraphs"
+        file: "content/isai_vizha/pann_research/paragraphs.md"
+        format: "frontmatter"
+        fields:
+          - { label: "Image", name: "research_image", widget: "image" }
+          - { label: "Paragraphs", name: "paragraphs", widget: "string" }
+ 
+      - label: "Table Data"
+        name: "pann_research_table_data"
+        file: "content/isai_vizha/pann_research/tables.md"
+        format: "frontmatter"
+        fields:
+          - label: "Table Headers"
+            name: "table_headers"
+            widget: "list"
+            field:
+              label: "Header"
+              name: "header"
+              widget: "string"
+          - label: "Table"
+            name: "table_rows"
+            widget: "list"
+            fields:
+              - { label: "Pann", name: "pann", widget: "string" }
+              - { label: "Ragam", name: "ragam", widget: "string" }
