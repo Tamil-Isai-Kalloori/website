@@ -65,6 +65,20 @@
       <description></description>
     </item>
     <item>
+      <title></title>
+      <link>//localhost:1313/isai_vizha/special_guest/paragraphs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/isai_vizha/special_guest/paragraphs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/isai_vizha/special_guest/tables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/isai_vizha/special_guest/tables/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Blog</title>
       <link>//localhost:1313/blog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -90,13 +104,6 @@
       <link>//localhost:1313/home/slider/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/home/slider/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Special Guests</title>
-      <link>//localhost:1313/isai_vizha/special_guest/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/isai_vizha/special_guest/</guid>
       <description></description>
     </item>
     <item>

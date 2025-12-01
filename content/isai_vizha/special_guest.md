@@ -1,16 +1,5 @@
 ---
-title : 'Special Guests'
-hero_image: /uploads/rajasir_banner_compressed.png
-hero_title: Special Guests
-breadcrumbs:
-  - name: Home
-    url: /
-  - name: Isai Vizha
-    url: /isai_vizha/
-  - name: Special Guests
-    url: /isai_vizha/special_guest/
 
-#--- change here ---
 guests:
   - year: 1943 - 1944 
     name: டாக்டர். ராஜா சர் அண்ணாமலை செட்டியார்
@@ -169,8 +158,4 @@ guests:
   - year: 2018 - 2019
     guest: முன்னாள் மாநிலங்களவை உறுப்பினர் திரு.இல.கணேசன்
 
-#--- / change here ---
-
-layout: "special_guest"
-type: "page"
 ---
