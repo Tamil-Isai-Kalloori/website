@@ -291,3 +291,53 @@ collections:
                   - label: "Year"
                     name: "year"
                     widget: "string"
+
+## isai vizha special guest
+  - name: "Isai Vizha Special Guest"
+    label: "Isai Vizha Spcial Guest"
+    files: 
+      - label: "Hero Section"
+        name: "sg_hero_section"
+        file: "content/isai_vizha/special_guest/_index.md"
+        format: "frontmatter"
+        fields:
+          - { label: "Image", name: "hero_image", widget: "image" }
+          - { label: "Title", name: "hero_title", widget: "string" }
+          - label: "Breadcrumbs"
+            name: "breadcrumbs"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+ 
+      - label: "Description"
+        name: "sg_paragraphs"
+        file: "content/isai_vizha/special_guest/paragraphs.md"
+        format: "frontmatter"
+        fields:
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Paragraphs", name: "paragraphs", widget: "string" }
+ 
+      - label: "Table Data"
+        name: "sg_table_data"
+        file: "content/isai_vizha/special_guest/tables.md"
+        format: "frontmatter"
+        fields:
+          - label: "Tables"
+            name: "tables"
+            widget: "list"
+            fields:
+              - label: "Table Name"
+                name: "name"
+                widget: "string"
+
+              - label: "Rows"
+                name: "rows"
+                widget: "list"
+                fields:
+                  - label: "Name"
+                    name: "name"
+                    widget: "string"
+                  - label: "Year"
+                    name: "year"
+                    widget: "string"
